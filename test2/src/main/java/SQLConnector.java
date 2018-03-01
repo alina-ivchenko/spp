@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static additional.dataBaseConstants.*;
+
 /**
  * Simple Java program to connect to MySQL database running on localhost and
  * running SELECT and INSERT query to retrieve and add data.
@@ -19,9 +21,9 @@ import java.util.Properties;
 
 public class SQLConnector {
 
-    private String url = "jdbc:mysql://localhost:3306/mydb";
-    private String user = "root";
-    private String password = "12341234";
+    private String url = DataBaseURL.getName();
+    private String user = DataBaseLogin.getName();
+    private String password = DataBasePassword.getName();
 
     private static Connection con;
     private static Statement stmt;
