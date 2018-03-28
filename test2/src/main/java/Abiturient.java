@@ -12,7 +12,16 @@ public class Abiturient {
     private LocalDate birthDay = LocalDate.now();
 
     //пока что не подгружается
+    private long idSpeciality = -1;
     private Speciality speciality = null;
+
+    public long getIdSpeciality() {
+        return idSpeciality;
+    }
+
+    public void setIdSpeciality(long idSpeciality) {
+        this.idSpeciality = idSpeciality;
+    }
 
     public long getIdAbiturient() {
         return idAbiturient;

@@ -21,7 +21,7 @@ public class firstServlet extends HttpServlet {
 
 
         PrintWriter out = resp.getWriter(); //pishet
-        SQLConnector mySqlConnection = new SQLConnector();
+        SQLConnector mySqlConnection = SQLConnector.getInstance();
         mySqlConnection.connect();
 
         PreparedStatement preparedStatement = mySqlConnection.prepareStatement("SELECT * FROM `Subject`");

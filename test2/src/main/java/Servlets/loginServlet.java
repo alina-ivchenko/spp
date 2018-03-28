@@ -46,7 +46,7 @@ public class loginServlet extends HttpServlet {
         DAOUser daoUser = new DAOUser();
 
         //TODO возвращает false, если пароль от БД указан неправильно
-        daoUser.setConnectionToUse(new SQLConnector());
+        daoUser.setConnectionToUse(SQLConnector.getInstance());
 
         boolean auth = false;
         User currUser = daoUser.getFullUserInfo(login);
