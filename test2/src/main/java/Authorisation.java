@@ -69,10 +69,28 @@ public class Authorisation {
 
             return true;
         } else {
-            user.setCurrSessionHash("");
+            user.setCurrSessionHash(null);
             return false;
         }
 
+    }
+
+    public void logoutUser(User user, HttpServletResponse resp) {
+        DAOUser daoUser = new DAOUser();
+        daoUser.setConnectionToUse(new SQLConnector());
+
+        user.setCurrSessionHash(null);
+
+        daoUser.updateUser(user);
+
+        Cookie cookie1 = new Cookie("login", "");
+        Cookie cookie2 = new Cookie("curr_session_hash", "");
+
+        cookie1.setMaxAge(-100);
+        cookie2.setMaxAge(-100);
+
+        resp.addCookie(cookie1);
+        resp.addCookie(cookie2);
     }
 
     private String generateHash(int length) {

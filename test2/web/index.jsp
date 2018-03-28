@@ -6,6 +6,11 @@
     <title></title>
 </head>
 <body>
-<a href="/login">LoginPage</a>
+<p>
+    <a href="/login">Войти</a>
+</p>
+<p>
+    <a href="/abiturients">Список студентов</a>
+</p>
 </body>
 </html>

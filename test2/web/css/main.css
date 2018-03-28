@@ -1,3 +1,7 @@
+header{
+    text-align: right;
+}
+
 #abiturientsTable, #oneAbiturient {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 14px;

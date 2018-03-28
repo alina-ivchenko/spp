@@ -14,6 +14,7 @@ public class AuthorisationFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
+        //подгрузка из web.xml параметра (включать или нет этот фильтр )
         this.config = config;
         String act = config.getInitParameter("active");
         if (act != null)
@@ -22,17 +23,19 @@ public class AuthorisationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
+        //если в web.xml отключена фильтрация на аутентификацию
         if (!active) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
 
+        //если зашли не из браузера
         if (!(servletRequest instanceof HttpServletRequest)) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
 
+        //пропускаем проверку авторизации для перечисленных страниц
         String url = ((HttpServletRequest) servletRequest).getRequestURI();
         if (url.equals("/login") || url.equals("/")) {
             filterChain.doFilter(servletRequest, servletResponse);
@@ -47,6 +50,7 @@ public class AuthorisationFilter implements Filter {
             return;
         }
 
+        //перебросить к следующему фильтру или сервлету
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

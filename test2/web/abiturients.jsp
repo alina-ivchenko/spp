@@ -16,6 +16,9 @@
     <script src="js/main.js"></script>
 </head>
 <body>
+<header>
+    <img src="img/exit_3.png" style="height: 35px" alt="Выйти" onclick="logout()">
+</header>
 <h2>Список абитурентов:</h2>
     <%
         List<Abiturient> abiturients = null;

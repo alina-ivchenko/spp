@@ -6,7 +6,7 @@ public class User {
     private String passwordHash = "password";
     private long role = -1;
     private String email = "noemail";
-    private String currSessionHash = "";
+    private String currSessionHash = null;
 
     public long getIdUser() {
         return idUser;
