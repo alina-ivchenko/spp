@@ -10,15 +10,22 @@
 <html>
 <head>
     <title>Студент</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/abiturients.css">
 </head>
 <body>
 <h1>Абитуриент</h1>
-<%
-    Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
-    if (abiturient != null) {
-        out.print(Drawer.drawCurrAbiturient(abiturient));
-    }
-%>
+<div class="mainContent">
+    <div class="menu"></div>
+    <div class="content">
+        <%
+            Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
+            if (abiturient != null) {
+                out.print(Drawer.drawCurrAbiturient(abiturient));
+            }
+        %>
+    </div>
+</div>
+
 </body>
 </html>

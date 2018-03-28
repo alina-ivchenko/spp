@@ -1,7 +1,3 @@
-header{
-    text-align: right;
-}
-
 #abiturientsTable, #oneAbiturient {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 14px;
@@ -23,6 +19,10 @@ header{
 
 #abiturientsTable th:last-child {
     border-top-right-radius: 20px;
+}
+
+tr:nth-child(n+2) {
+    cursor: pointer;
 }
 
 /*#abiturientsTable*/
