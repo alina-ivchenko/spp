@@ -18,10 +18,18 @@ public class SQLConnector {
     private static Statement stmt;
     private static ResultSet rs;
 
-    public SQLConnector() {
+    private static SQLConnector instance = null;
+
+    private SQLConnector() {
         Properties properties = new Properties();
         properties.setProperty("characterEncoding", "utf8");
         /*оставлю пустой конструктор, дабы можно было оставить изначально инициализированные значения*/
+    }
+
+    public static SQLConnector getInstance() {
+        if (instance == null)
+            instance = new SQLConnector();
+        return instance;
     }
 
     public SQLConnector(String url, String userName, String password) {

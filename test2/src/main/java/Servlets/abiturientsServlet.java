@@ -27,8 +27,8 @@ public class abiturientsServlet extends HttpServlet {
         DAOAbiturient daoAbiturient = new DAOAbiturient();
         DAOSpeciality daoSpeciality = new DAOSpeciality();
 
-        daoAbiturient.setConnectionToUse(new SQLConnector());
-        daoSpeciality.setConnectionToUse(new SQLConnector());
+        daoAbiturient.setConnectionToUse(SQLConnector.getInstance());
+        daoSpeciality.setConnectionToUse(SQLConnector.getInstance());
 
         if (currAbiturientId == null) {
             List<Abiturient> abiturients = daoAbiturient.getAbiturients();

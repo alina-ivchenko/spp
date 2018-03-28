@@ -12,8 +12,8 @@ public class temp {
         DAOAbiturient daoAbiturient = new DAOAbiturient();
         DAOSpeciality daoSpeciality = new DAOSpeciality();
 
-        daoAbiturient.setConnectionToUse(new SQLConnector());
-        daoSpeciality.setConnectionToUse(new SQLConnector());
+        daoAbiturient.setConnectionToUse(SQLConnector.getInstance());
+        daoSpeciality.setConnectionToUse(SQLConnector.getInstance());
 
         Abiturient abiturient = daoAbiturient.getAbiturientById(1);
         abiturient.setSpeciality(daoSpeciality.getSpecialityById(abiturient.getIdSpeciality()));
