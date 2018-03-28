@@ -2,3 +2,7 @@ header {
     text-align: right;
 }
 
+body {
+    margin: 0px;
+    background-color: #F2906B;
+}
