@@ -9,17 +9,14 @@ public abstract class DAO {
     //ссылка на используемое подключение
     protected SQLConnector currConnection;
 
-    DAO()
-    {
-
+    DAO() {
+        setConnectionToUse(SQLConnector.getInstance());
     }
 
-    public Boolean setConnectionToUse(SQLConnector connectionToUse)
-    {
-        if(connectionToUse == null) {
+    public Boolean setConnectionToUse(SQLConnector connectionToUse) {
+        if (connectionToUse == null) {
             return false;
-        }
-        else {
+        } else {
             currConnection = connectionToUse;
             return currConnection.connect();
             //return true;
