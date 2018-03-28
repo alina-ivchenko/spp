@@ -12,10 +12,10 @@ import java.util.List;
 
 public class DAOAbiturient extends DAO {
 
-    public Abiturient getAbiturientById(int abiturientId) {
+    public Abiturient getAbiturientById(long abiturientId) {
         PreparedStatement preparedQuery = currConnection.prepareStatement("SELECT `Id_Abiturient`, `Last_Name`, `First_Name`, `Second_Name`, `Address`, `Passport`, `Birthdate`, `Id_Speciality` FROM `abiturient` WHERE `Id_Abiturient` = ?");
         try {
-            preparedQuery.setInt(1, abiturientId);
+            preparedQuery.setLong(1, abiturientId);
         } catch (SQLException e) {
             return null;
         }

@@ -1,6 +1,7 @@
 package main.java;
 
 import main.java.DAO.DAOAbiturient;
+import main.java.DAO.DAOSpeciality;
 import main.java.DAO.DAOUser;
 import main.java.DAO.SQLConnector;
 
@@ -9,14 +10,13 @@ import java.util.List;
 public class temp {
     public static void main(String[] args) {
         DAOAbiturient daoAbiturient = new DAOAbiturient();
-        daoAbiturient.setConnectionToUse(new SQLConnector());
+        DAOSpeciality daoSpeciality = new DAOSpeciality();
 
-        User tempUser = new User();
+        daoAbiturient.setConnectionToUse(SQLConnector.getInstance());
+        daoSpeciality.setConnectionToUse(SQLConnector.getInstance());
 
-        tempUser.setLogin("yarad");
-        tempUser.setEmail("yarad@world.com");
-        tempUser.setRole(1);
-        tempUser.setPasswordHash("password");
+        Abiturient abiturient = daoAbiturient.getAbiturientById(1);
+        abiturient.setSpeciality(daoSpeciality.getSpecialityById(abiturient.getIdSpeciality()));
 
         List<Abiturient> abiturients = daoAbiturient.getAbiturients();
     }

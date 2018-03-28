@@ -1,0 +1,46 @@
+#abiturientsTable, #oneAbiturient {
+    margin: 20px auto;
+
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: 20px;
+    box-shadow: 0 0 0 10px #41342F;
+    color: #452F21;
+}
+
+#abiturientsTable th, #oneAbiturient th {
+    padding: 10px 8px;
+    background: white;
+}
+
+#abiturientsTable th:first-child, #oneAbiturient th:first-child {
+    border-top-left-radius: 20px;
+}
+
+#abiturientsTable th:last-child, #oneAbiturient th:last-child {
+    border-top-right-radius: 20px;
+}
+
+#abiturientsTable tr:nth-child(n+2) {
+    cursor: pointer;
+}
+
+#abiturientsTable td, #oneAbiturient td {
+    border-top: 10px solid #F2906B;
+    padding: 8px;
+    background: white;
+}
+
+/*последняя строка -> первый элемент*/
+#abiturientsTable tr:last-child td:first-child, #oneAbiturient tr:last-child td:first-child {
+    border-bottom-left-radius: 20px;
+}
+
+/*последняя строка -> последний элемент*/
+#abiturientsTable tr:last-child td:last-child, #oneAbiturient tr:last-child td:last-child {
+    border-bottom-right-radius: 20px;
+}
+
+
