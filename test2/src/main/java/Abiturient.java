@@ -1,5 +1,8 @@
 package main.java;
 
+import main.java.DAO.DAOSpeciality;
+import main.java.DAO.SQLConnector;
+
 import java.time.LocalDate;
 
 public class Abiturient {
@@ -80,6 +83,10 @@ public class Abiturient {
     }
 
     public Speciality getSpeciality() {
+        if (speciality == null) {
+            DAOSpeciality daoSpeciality = new DAOSpeciality();
+            speciality = daoSpeciality.getSpecialityById(this.getIdSpeciality());
+        }
         return speciality;
     }
 

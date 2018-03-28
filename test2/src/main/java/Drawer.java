@@ -15,7 +15,7 @@ public class Drawer {
                     "<td>" + abiturients.get(i).getFirstName() + "</td>" +
                     "<td>" + abiturients.get(i).getSecondName() + "</td>" +
                     "<td>" + "Пока что без названия" + "</td>" +
-                    "<td>" + "Пока что без названия" + "</td>"
+                    "<td><a href='/specialities?nothing_has_sense'>" + abiturients.get(i).getSpeciality().getName() + "</a></td>"
                     + "</tr>");
         stringBuilder.append("</table>");
         return stringBuilder.toString();
@@ -50,7 +50,7 @@ public class Drawer {
                     "<td>" + abiturients.get(i).getAddress() + "</td>" +
                     "<td>" + abiturients.get(i).getPassport() + "</td>" +
                     "<td>" + abiturients.get(i).getBirthDay().toString() + "</td>" +
-                    "<td>" + "Пока что без названия" + "</td>"
+                    "<td><a href='/specialities?nothing_has_sense'>" + abiturients.get(i).getSpeciality().getName() + "</a></td>"
                     + "</tr>");
         stringBuilder.append("</table>");
         return stringBuilder.toString();
