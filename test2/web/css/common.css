@@ -1,19 +1,20 @@
 header {
     padding: 15px 10px;
-    background: darkslategrey;
+    background: navy;
     height: 40px;
 }
 
 header h2 {
     text-align: center;
     margin: 0;
+    color: aliceblue;
 }
 
 header .rightPanel {
     width: 200px;
     max-height: 40px;
     position: absolute;
-    top: 0;
+    top: 12px;
     right: 0;
 }
 
@@ -24,8 +25,12 @@ header .rightPanel {
 }
 
 body {
-    margin: 0px;
-    background-color: #F2906B;
+    /*margin: 0px;
+    background-color: #F2906B;*/
+
+    background:  Thistle;
+    backgroung-size: cover;
+    background-attachment: fixed;
 }
 
 h2 {
@@ -61,4 +66,31 @@ h2 {
 
 .hide{
     display: none;
+}
+
+a
+{
+    text-decoration: none;
+    border-radius: 15%;
+    padding: 10px;
+    -moz-transition: all 0.6s 0.01s ease;
+    -o-transition: all 0.6s 0.01s ease;
+    -webkit-transition: all 0.6s 0.01s ease;
+}
+
+a:link
+{
+    color : Indigo;
+    padding: 2px;
+}
+
+a:visited
+{
+    color : MediumSlateBlue;
+}
+
+a:hover
+{
+    background: BlueViolet;
+    color: PaleGreen;
 }

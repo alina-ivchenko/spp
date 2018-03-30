@@ -9,7 +9,7 @@ public class Drawer {
                 "    <h2>" + title + "</h2>\n" +
                 "    <div class='rightPanel'>" +
                 "        <a class=\"gotoMainPage\" href=\"/\">На главную</a>\n" +
-                "        <img src=\"img/exit_3.png\" style=\"height: 35px\" alt=\"Выйти\" onclick=\"logout()\">\n" +
+                "        <img src=\"img/exit.png\" style=\"height: 60px; width: 60px;\" alt=\"Выйти\" onclick=\"logout()\">\n" +
                 "    </div>" +
                 "</header>";
     }
