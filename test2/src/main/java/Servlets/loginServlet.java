@@ -2,7 +2,6 @@ package main.java.Servlets;
 
 import main.java.Authorisation;
 import main.java.DAO.DAOUser;
-import main.java.DAO.SQLConnector;
 import main.java.User;
 
 import javax.servlet.ServletException;
@@ -44,9 +43,6 @@ public class loginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         DAOUser daoUser = new DAOUser();
-
-        //TODO возвращает false, если пароль от БД указан неправильно
-        daoUser.setConnectionToUse(SQLConnector.getInstance());
 
         boolean auth = false;
         User currUser = daoUser.getFullUserInfo(login);
