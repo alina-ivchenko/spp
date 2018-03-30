@@ -39,7 +39,6 @@ public class Authorisation {
             return null;
 
         DAOUser daoUser = new DAOUser();
-        daoUser.setConnectionToUse(SQLConnector.getInstance());
 
         User user = daoUser.getFullUserInfo(login);
         if (user != null && user.getCurrSessionHash() != null && user.getCurrSessionHash().equals(currSessionHash))
@@ -57,7 +56,6 @@ public class Authorisation {
     public boolean authoriseUser(User user, HttpServletResponse resp) {
 
         DAOUser daoUser = new DAOUser();
-        daoUser.setConnectionToUse(SQLConnector.getInstance());
 
         String currSessionHash = generateHash(20);
         user.setCurrSessionHash(currSessionHash);
@@ -77,7 +75,6 @@ public class Authorisation {
 
     public void logoutUser(User user, HttpServletResponse resp) {
         DAOUser daoUser = new DAOUser();
-        daoUser.setConnectionToUse(SQLConnector.getInstance());
 
         user.setCurrSessionHash(null);
 

@@ -1,22 +1,20 @@
-<%@ page import="main.java.Abiturient" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="main.java.Drawer" %>
+<%@ page import="main.java.Speciality" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Абитуриенты</title>
-    <link rel="stylesheet" href="css/common.css">
+    <title>Специальности</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
-    <link rel="stylesheet" href="css/abiturientsPage.css">
 
     <script src="js/main.js"></script>
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Абитуриенты"));
+    out.print(Drawer.drawHeader("Специальности"));
 %>
+
 <div class="mainContainer">
     <div class="menu">
         <button class="menuButton">Добавить абитуриента</button>
@@ -26,19 +24,17 @@
     </div>
     <div class="content">
         <%
-            List<Abiturient> abiturients = null;
+            List<Speciality> specialities = null;
             try {
-                abiturients = (List<Abiturient>) request.getAttribute("listOfAbiturients");
+                specialities = (List<Speciality>) request.getAttribute("listOfSpecialities");
             } catch (Exception e) {
 
             }
 
-            if (abiturients != null)
-                out.println(Drawer.drawShortListOfAbiturients(abiturients));
+            if (specialities != null)
+                out.println(Drawer.drawShortListOfSpecialities(specialities));
         %>
     </div>
     <div style="clear: both"></div>
-</div>
-
 </body>
 </html>

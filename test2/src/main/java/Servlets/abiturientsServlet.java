@@ -2,9 +2,6 @@ package main.java.Servlets;
 
 import main.java.Abiturient;
 import main.java.DAO.DAOAbiturient;
-import main.java.DAO.DAOSpeciality;
-import main.java.DAO.SQLConnector;
-import main.java.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +22,6 @@ public class abiturientsServlet extends HttpServlet {
         }
 
         DAOAbiturient daoAbiturient = new DAOAbiturient();
-        DAOSpeciality daoSpeciality = new DAOSpeciality();
-
-        daoAbiturient.setConnectionToUse(SQLConnector.getInstance());
-        daoSpeciality.setConnectionToUse(SQLConnector.getInstance());
 
         if (currAbiturientId == null) {
             List<Abiturient> abiturients = daoAbiturient.getAbiturients();
@@ -37,7 +30,6 @@ public class abiturientsServlet extends HttpServlet {
             req.getRequestDispatcher("abiturients.jsp").forward(req, resp);
         } else {
             Abiturient abiturient = daoAbiturient.getAbiturientById(currAbiturientId);
-            abiturient.setSpeciality(daoSpeciality.getSpecialityById(abiturient.getIdSpeciality()));
             req.setAttribute("currAbiturientInfo", abiturient);
             req.getRequestDispatcher("/abiturientInfoPage.jsp").forward(req, resp);
         }

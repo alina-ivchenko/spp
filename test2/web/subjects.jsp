@@ -1,21 +1,19 @@
-<%@ page import="main.java.Abiturient" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="main.java.Drawer" %>
+<%@ page import="main.java.Subject" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Абитуриенты</title>
+    <title>Предметы</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
-    <link rel="stylesheet" href="css/abiturientsPage.css">
 
     <script src="js/main.js"></script>
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Абитуриенты"));
+    out.print(Drawer.drawHeader("Предметы"));
 %>
 <div class="mainContainer">
     <div class="menu">
@@ -26,15 +24,15 @@
     </div>
     <div class="content">
         <%
-            List<Abiturient> abiturients = null;
+            List<Subject> subjects = null;
             try {
-                abiturients = (List<Abiturient>) request.getAttribute("listOfAbiturients");
+                subjects = (List<Subject>) request.getAttribute("listOfSubjects");
             } catch (Exception e) {
 
             }
 
-            if (abiturients != null)
-                out.println(Drawer.drawShortListOfAbiturients(abiturients));
+            if (subjects != null)
+                out.println(Drawer.drawShortListOfSubjects(subjects));
         %>
     </div>
     <div style="clear: both"></div>
