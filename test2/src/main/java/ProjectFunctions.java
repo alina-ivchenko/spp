@@ -1,7 +1,7 @@
 package main.java;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
+import java.sql.Date;
 import java.util.*;
 
 public class ProjectFunctions {
@@ -32,9 +32,26 @@ public class ProjectFunctions {
             }
             if (methodToRun != null) {
                 try {
-                    Type setValueType = methodToRun.getGenericParameterTypes()[0];
+                    String typeName = methodToRun.getGenericParameterTypes()[0].getTypeName();
 
-                    methodToRun.invoke(object, item.getValue());
+                    if (typeName.equalsIgnoreCase("java.lang.String")) {
+                        methodToRun.invoke(object, item.getValue().toString());
+                        continue;
+                    }
+
+                    if (typeName.equalsIgnoreCase("long")) {
+                        methodToRun.invoke(object, Long.parseLong(item.getValue().toString()));
+                        continue;
+                    }
+
+                    if (typeName.equalsIgnoreCase("date")) {
+                        methodToRun.invoke(object, Date.valueOf(item.getValue().toString()));
+                        continue;
+                    }
+
+                    methodToRun.invoke(object, Date.valueOf(item.getValue().toString()));
+                    continue;
+
                 } catch (Exception e) {
                     avoidedElementsOfArray.put(item.getKey(), item.getValue());
                 }
@@ -44,6 +61,10 @@ public class ProjectFunctions {
             //TODO:  object.getClass().getMethod("set".concat(convertDbNameToSetterPostfix(item.getKey())));
         }
         return avoidedElementsOfArray;
+    }
+
+    public static boolean isEmptyOrNull(String str) {
+        return str == null || str.isEmpty();
     }
 
     private static List<Method> getSetters(Method[] methodsToFilter) {

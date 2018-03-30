@@ -1,8 +1,64 @@
 header {
-    text-align: right;
+    padding: 15px 10px;
+    background: darkslategrey;
+    height: 40px;
+}
+
+header h2 {
+    text-align: center;
+    margin: 0;
+}
+
+header .rightPanel {
+    width: 200px;
+    max-height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.rightPanel a, .rightPanel img {
+    display: inline-block;
+    width: 48%;
+    height: 40px;
 }
 
 body {
     margin: 0px;
     background-color: #F2906B;
+}
+
+h2 {
+    text-align: center;
+}
+
+.mainContainer {
+    width: 80%;
+    margin: 10px 10%;
+    padding: 10px;
+    background-color: aliceblue;
+    box-shadow: 10px 10px 10px gray;
+}
+
+.menu {
+    width: 20%;
+    float: left;
+}
+
+.menu button {
+    display: inline-block;
+    margin: 5%;
+    width: 90%;
+    height: 40px;
+    background: #8bffc5;
+}
+
+.content {
+    width: 80%;
+    float: right;
+    text-align: center;
+}
+
+.hide{
+    display: none;
 }
