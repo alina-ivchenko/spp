@@ -5,12 +5,22 @@
 <head>
     <title>Студент</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/abiturientsDrawing.css">
+    <link rel="stylesheet" href="css/tableDrawing.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/dataEditor.js"></script>
 </head>
 <body>
-<h1>Абитуриент</h1>
-<div class="mainContent">
-    <div class="menu"></div>
+
+<%
+    out.print(Drawer.drawHeader("Студент"));
+%>
+
+<div class="mainContainer">
+    <div class="menu">
+        <button id="editBtn" onclick="onEditBtnClick()">Редактировать</button>
+        <button id="saveBtn" onclick="onSaveChangesBtnClick()" style="display: none">Сохранить</button>
+        <button>Удалить</button>
+    </div>
     <div class="content">
         <%
             Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
@@ -19,7 +29,10 @@
             }
         %>
     </div>
+    <div style="clear: both"></div>
 </div>
+
+<form style="display: none" name="mainSendForm" action="/saver"></form>
 
 </body>
 </html>

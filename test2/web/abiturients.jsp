@@ -7,16 +7,16 @@
 <head>
     <title>Абитуриенты</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/abiturientsDrawing.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/tableDrawing.css">
     <link rel="stylesheet" href="css/abiturientsPage.css">
 
     <script src="js/main.js"></script>
 </head>
 <body>
-<header>
-    <img src="img/exit_3.png" style="height: 35px" alt="Выйти" onclick="logout()">
-</header>
-<h2>Список абитурентов:</h2>
+<%
+    out.print(Drawer.drawHeader("Абитуриенты"));
+%>
 <div class="mainContainer">
     <div class="menu">
         <button class="menuButton">Добавить абитуриента</button>
@@ -34,7 +34,7 @@
             }
 
             if (abiturients != null)
-                out.println(Drawer.drawShortListOfAbiturents(abiturients));
+                out.println(Drawer.drawShortListOfAbiturients(abiturients));
         %>
     </div>
     <div style="clear: both"></div>
