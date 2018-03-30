@@ -9,15 +9,8 @@ import java.util.List;
 
 public class temp {
     public static void main(String[] args) {
-        DAOAbiturient daoAbiturient = new DAOAbiturient();
         DAOSpeciality daoSpeciality = new DAOSpeciality();
-
-        daoAbiturient.setConnectionToUse(SQLConnector.getInstance());
-        daoSpeciality.setConnectionToUse(SQLConnector.getInstance());
-
-        Abiturient abiturient = daoAbiturient.getAbiturientById(1);
-        abiturient.setSpeciality(daoSpeciality.getSpecialityById(abiturient.getIdSpeciality()));
-
-        List<Abiturient> abiturients = daoAbiturient.getAbiturients();
+        List<Speciality> specialities = daoSpeciality.getAllSpecialities();
+        List<Speciality> specialities2 = daoSpeciality.getAllSpecialities();
     }
 }
