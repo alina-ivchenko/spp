@@ -79,8 +79,6 @@ public class SQLConnector {
             //retValue = stmt.execute(queryString);
             //Statement.RETURN_GENERATED_KEYS задётся в preparStatement
             retValue = queryPrepared.executeUpdate() != 0;
-
-
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         } finally {

@@ -13,7 +13,7 @@ public abstract class DAO {
         setConnectionToUse(SQLConnector.getInstance());
     }
 
-    public Boolean setConnectionToUse(SQLConnector connectionToUse) {
+    private Boolean setConnectionToUse(SQLConnector connectionToUse) {
         if (connectionToUse == null) {
             return false;
         } else {
