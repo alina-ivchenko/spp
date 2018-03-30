@@ -1,9 +1,8 @@
 package main.java;
 
 import main.java.DAO.DAOSpeciality;
-import main.java.DAO.SQLConnector;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Abiturient {
     private long idAbiturient = -1;
@@ -12,7 +11,7 @@ public class Abiturient {
     private String secondName = "";
     private String address = "";
     private String passport = "";
-    private LocalDate birthDay = LocalDate.now();
+    private Date birthDay = Date.valueOf("2012-12-12");
 
     //пока что не подгружается
     private long idSpeciality = -1;
@@ -74,11 +73,11 @@ public class Abiturient {
         this.passport = passport;
     }
 
-    public LocalDate getBirthDay() {
+    public Date getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(LocalDate birthDay) {
+    public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
 

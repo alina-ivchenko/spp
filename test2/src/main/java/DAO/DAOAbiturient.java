@@ -2,7 +2,6 @@ package main.java.DAO;
 
 import main.java.Abiturient;
 import main.java.ProjectFunctions;
-import main.java.User;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -44,5 +43,35 @@ public class DAOAbiturient extends DAO {
         }
 
         return abiturients;
+    }
+
+    public boolean updateAbiturient(Abiturient abiturient) {
+        if (abiturient == null) return false;
+        PreparedStatement preparedStatement = currConnection.prepareStatement(
+                "UPDATE `abiturient` SET " +
+                        "`Last_Name`=?," +
+                        "`First_Name`=?," +
+                        "`Second_Name`=?," +
+                        "`Address`=?," +
+                        "`Passport`=?," +
+                        "`Birthdate`=?," +
+                        "`Id_Speciality`=? " +
+                        "WHERE `Id_Abiturient`=?"
+        );
+
+        try {
+            preparedStatement.setString(1, abiturient.getLastName());
+            preparedStatement.setString(2, abiturient.getFirstName());
+            preparedStatement.setString(3, abiturient.getSecondName());
+            preparedStatement.setString(4, abiturient.getAddress());
+            preparedStatement.setString(5, abiturient.getPassport());
+            preparedStatement.setDate(6, abiturient.getBirthDay());
+            preparedStatement.setLong(7, abiturient.getIdSpeciality());
+            preparedStatement.setLong(8, abiturient.getIdAbiturient());
+        } catch (SQLException e) {
+            return false;
+        }
+
+        return currConnection.queryDataEdit(preparedStatement);
     }
 }
