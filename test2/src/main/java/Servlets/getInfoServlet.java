@@ -25,7 +25,7 @@ public class getInfoServlet extends HttpServlet {
 
         String task = req.getParameter("task");
         if (ProjectFunctions.isEmptyOrNull(task)) {
-            out.println("");
+            out.println("Error");
             return;
         }
 

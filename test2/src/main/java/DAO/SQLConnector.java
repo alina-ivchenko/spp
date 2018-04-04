@@ -26,6 +26,11 @@ public class SQLConnector {
         connect();
         /*оставлю пустой конструктор, дабы можно было оставить изначально инициализированные значения*/
     }
+    
+    protected void finalize() throws Throwable {
+        super.finalize();
+        disconnect();
+    }
 
     public static SQLConnector getInstance() {
         if (instance == null)

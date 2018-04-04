@@ -17,8 +17,9 @@
 
 <div class="mainContainer">
     <div class="menu">
-        <button id="editBtn" onclick="onEditBtnClick()">Редактировать</button>
-        <button id="saveBtn" onclick="onSaveChangesBtnClick()" style="display: none">Сохранить</button>
+        <button id="editBtn" onclick="onEditBtnClick('ListOfSpecialities')">Редактировать</button>
+        <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Abiturient')" style="display: none">Сохранить
+        </button>
         <button>Удалить</button>
     </div>
     <div class="content">
@@ -36,8 +37,7 @@
       method="post"
       id="mainSendForm"
       name="mainSendForm"
-      action="/saver"
-      >
+      action="/saver">
 </form>
 
 </body>
