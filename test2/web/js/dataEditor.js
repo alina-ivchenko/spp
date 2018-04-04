@@ -1,5 +1,44 @@
 function onEditBtnClick() {
-    $(".editable").wrapInner("<textarea class='editTextarea' form='mainSendForm'></textarea>");
+    //вставляем textarea
+    //$(".editable").wrapInner("<textarea class='editTextarea' form='mainSendForm'></textarea>");
+
+    $.post(
+        "/getInfo",
+        {
+            task: "ListOfSpecialities"
+        },
+        onRequiredInfoLoaded
+    );
+}
+
+//продолжение запустится сразу, как подкгрзятся данные
+function onRequiredInfoLoaded(data) {
+    var serverAnswer = JSON.parse(data);
+
+    $('.send').each(function (index, value) {
+        id = this.id;
+
+        if ($(this).hasClass('editable'))
+            $(this).wrapInner("<textarea class='editTextarea' form='mainSendForm' name='" + id + "'></textarea>");
+
+        if ($(this).hasClass('non-editable'))
+            $(this).wrapInner("<textarea class='editTextarea' form='mainSendForm' name='" + id + "' disabled='disabled'></textarea>");
+
+        if ($(this).hasClass('selectable')) {
+            if (this.id === 'Speciality') {
+                str = "<select>";
+                for (key in serverAnswer) {
+                    key = parseInt(key);
+
+                    str += "<option value='" + key + "'>";
+                    str += serverAnswer[key] + "</option>";
+                }
+                str += "</select>";
+                $(this).html(str)
+            }
+            //$(this).html(data)
+        }
+    });
 
     $("#editBtn").hide();
     $("#saveBtn").show();
@@ -8,6 +47,7 @@ function onEditBtnClick() {
 function onSaveChangesBtnClick() {
     sendSaveRequest();
 }
+
 
 function sendSaveRequest() {
     $.post(

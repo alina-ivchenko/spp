@@ -82,15 +82,15 @@ public class Drawer {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
 
-        stringBuilder.append("<tr><td>ID</td>             <td class='send' id='IdAbiturient'>" + abiturient.getIdAbiturient() + "</td></tr>");
-        stringBuilder.append("<tr><td>Фамилия</td>        <td class='send editable' id='LastName'>" + abiturient.getLastName() + "</td></tr>");
-        stringBuilder.append("<tr><td>Имя</td>            <td class='send editable' id='FirstName'>" + abiturient.getFirstName() + "</td></tr>");
-        stringBuilder.append("<tr><td>Отчество</td>       <td class='send editable' id='SecondName'>" + abiturient.getSecondName() + "</td></tr>");
-        stringBuilder.append("<tr><td>Дата рождения</td>  <td class='send editable' id='BirthDay'>" + abiturient.getBirthDay().toString() + "</td></tr>");
-        stringBuilder.append("<tr><td>Адрес</td>          <td class='send editable' id='Address'>" + abiturient.getAddress() + "</td></tr>");
-        stringBuilder.append("<tr><td>Номер паспорта</td> <td class='send editable' id='Passport'>" + abiturient.getPassport() + "</td></tr>");
-        stringBuilder.append("<tr><td>Факультет</td>      <td class='send'          id='Faculty'><a href='/faculties?currFacultyId=" + abiturient.getSpeciality().getIdFaculty() + "'>" + abiturient.getSpeciality().getFaculty().getName() + "</a></td></tr>");
-        stringBuilder.append("<tr><td>Специальность</td>  <td class='send'          id='Speciality'><a href='/specialities?currSpecialityId=" + abiturient.getIdSpeciality() + "'>" + abiturient.getSpeciality().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>ID</td>             <td class='send non-editable'            id='IdAbiturient'>" + abiturient.getIdAbiturient() + "</td></tr>");
+        stringBuilder.append("<tr><td>Фамилия</td>        <td class='send editable'   id='LastName'>" + abiturient.getLastName() + "</td></tr>");
+        stringBuilder.append("<tr><td>Имя</td>            <td class='send editable'   id='FirstName'>" + abiturient.getFirstName() + "</td></tr>");
+        stringBuilder.append("<tr><td>Отчество</td>       <td class='send editable'   id='SecondName'>" + abiturient.getSecondName() + "</td></tr>");
+        stringBuilder.append("<tr><td>Дата рождения</td>  <td class='send editable'   id='BirthDay'>" + abiturient.getBirthDay().toString() + "</td></tr>");
+        stringBuilder.append("<tr><td>Адрес</td>          <td class='send editable'   id='Address'>" + abiturient.getAddress() + "</td></tr>");
+        stringBuilder.append("<tr><td>Номер паспорта</td> <td class='send editable'   id='Passport'>" + abiturient.getPassport() + "</td></tr>");
+        stringBuilder.append("<tr><td>Факультет</td>      <td class='send selectable' id='Faculty'><a href='/faculties?currFacultyId=" + abiturient.getSpeciality().getIdFaculty() + "'>" + abiturient.getSpeciality().getFaculty().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Специальность</td>  <td class='send selectable' id='Speciality'><a href='/specialities?currSpecialityId=" + abiturient.getIdSpeciality() + "'>" + abiturient.getSpeciality().getName() + "</a></td></tr>");
 
         stringBuilder.append("<tr class='hide'><td>ID Специальность</td><td class='send'     id='IdSpeciality'>" + abiturient.getIdSpeciality() + "</td></tr>");
 
