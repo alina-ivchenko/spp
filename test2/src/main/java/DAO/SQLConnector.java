@@ -23,6 +23,7 @@ public class SQLConnector {
     private SQLConnector() {
         Properties properties = new Properties();
         properties.setProperty("characterEncoding", "utf8");
+        connect();
         /*оставлю пустой конструктор, дабы можно было оставить изначально инициализированные значения*/
     }
 
@@ -130,11 +131,12 @@ public class SQLConnector {
     public PreparedStatement prepareStatement(String sql) {
         PreparedStatement retValue = null;
         try {
-            //в этом месте я немножко схалявилa
             //по-хорошему Statement.RETURN_GENERATED_KEYS должен быть вариативным
             //но примем, будто он нужен всегда
             retValue = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         } catch (SQLException e) {
+
+        } catch (Exception e) {
 
         }
 

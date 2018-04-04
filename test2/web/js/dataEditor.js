@@ -22,11 +22,11 @@ function onRequiredInfoLoaded(data) {
             $(this).wrapInner("<textarea class='editTextarea' form='mainSendForm' name='" + id + "'></textarea>");
 
         if ($(this).hasClass('non-editable'))
-            $(this).wrapInner("<textarea class='editTextarea' form='mainSendForm' name='" + id + "' disabled='disabled'></textarea>");
+            $(this).wrapInner("<textarea class='editTextarea readonly' form='mainSendForm' name='" + id + "' readonly='readonly'></textarea>");
 
         if ($(this).hasClass('selectable')) {
-            if (this.id === 'Speciality') {
-                str = "<select>";
+            if (this.id === 'IdSpeciality') {
+                str = "<select form = 'mainSendForm' name='IdSpeciality'>";
                 for (key in serverAnswer) {
                     key = parseInt(key);
 
@@ -36,7 +36,6 @@ function onRequiredInfoLoaded(data) {
                 str += "</select>";
                 $(this).html(str)
             }
-            //$(this).html(data)
         }
     });
 
@@ -48,17 +47,14 @@ function onSaveChangesBtnClick() {
     sendSaveRequest();
 }
 
-
 function sendSaveRequest() {
-    $.post(
-        "/saver",
-        {
-            task: "update",
-            objectType: "Abiturient",
-            data: getArrayFromTdData($('.send'))
-        },
-        onSavedSuccessfully
-    );
+
+    $('#mainSendForm').append("<input name='task' value='update'>");
+    $('#mainSendForm').append("<input name='objectType' value='Abiturient'>");
+    $('#mainSendForm').submit();
+
+    //reset form
+    $('#mainSendForm').html("");
 }
 
 function onSavedSuccessfully(data) {
@@ -73,6 +69,13 @@ function onSavedSuccessfully(data) {
     $("#editBtn").show();
 }
 
+function onSaveError(data) {
+    alert("ERROR");
+}
+
+/*
+    теперь будем отправлять через форму.
+    собирать вручную данные нет необходимости
 
 function getArrayFromTdData(array) {
     retArr = {};
@@ -92,3 +95,5 @@ function getArrayFromTdData(array) {
 
     return JSON.stringify(retArr);
 }
+
+*/
