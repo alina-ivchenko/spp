@@ -34,6 +34,16 @@
         <servlet-class>main.java.Servlets.saverServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>getInfoServlet</servlet-name>
+        <servlet-class>main.java.Servlets.getInfoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>getInfoServlet</servlet-name>
+        <url-pattern>/getInfo</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>saverServlet</servlet-name>
         <url-pattern>/saver</url-pattern>

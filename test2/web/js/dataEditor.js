@@ -1,25 +1,71 @@
-function onEditBtnClick() {
-    $(".editable").wrapInner("<textarea class='editTextarea' form='mainSendForm'></textarea>");
+function onEditBtnClick(taskStr) {
+    //taskStr определяет, нужно ли что-то подгружать дополнительно
+    //перед началом изменения. например, чтобы получить список всех
+    //специальностей, нужно передать в taskStr 'ListOfSpecialities'
+    //если ничего не нужно, ничего и не передаём
+
+    if (taskStr === null)
+        onRequiredInfoLoaded();
+    else
+        $.post(
+            "/getInfo",
+            {
+                task: taskStr
+            },
+            onRequiredInfoLoaded
+        );
+}
+
+//продолжение запустится сразу, как подкгрзятся данные
+function onRequiredInfoLoaded(data) {
+    if (data !== null && data !== 'Error')
+        var serverAnswer = JSON.parse(data);
+
+    $('.send').each(function (index, value) {
+
+        if ($(this).hasClass('editable'))
+            $(this).wrapInner("<textarea class='editTextarea' form='mainSendForm' name='" + this.id + "'></textarea>");
+
+        if ($(this).hasClass('non-editable'))
+            $(this).wrapInner("<textarea class='editTextarea readonly' form='mainSendForm' name='" + this.id + "' readonly='readonly'></textarea>");
+
+        if ($(this).hasClass('selectable')) {
+            str = "<select form = 'mainSendForm' name='" + this.id + "'>";
+            for (key in serverAnswer) {
+                key = parseInt(key);
+
+                str += "<option value='" + key + "'>";
+                str += serverAnswer[key] + "</option>";
+            }
+            str += "</select>";
+            $(this).html(str)
+        }
+    });
 
     $("#editBtn").hide();
     $("#saveBtn").show();
 }
 
-function onSaveChangesBtnClick() {
-    sendSaveRequest();
+function onSaveChangesBtnClick(task, objectType) {
+    if (task !== null && objectType !== null)
+        sendSaveRequest(task, objectType);
+    else
+        alert("onSaveChangesBtnClick error: неверные параметры");
 }
 
-function sendSaveRequest() {
-    $.post(
-        "/saver",
-        {
-            task: "update",
-            objectType: "Abiturient",
-            data: getArrayFromTdData($('.send'))
-        },
-        onSavedSuccessfully
-    );
+function sendSaveRequest(task, objectType) {
+
+    //пока что не асинхронно
+    $('#mainSendForm').append("<input name='task' value='" + task + "'>")
+        .append("<input name='objectType' value='" + objectType + "'>")
+        .submit();
+
+    //reset form
+    //$('#mainSendForm').html("");
 }
+
+/*
+пока что без асинхронности, а значит обратной реакции нет
 
 function onSavedSuccessfully(data) {
     alert("OK " + data);
@@ -33,6 +79,13 @@ function onSavedSuccessfully(data) {
     $("#editBtn").show();
 }
 
+function onSaveError(data) {
+    alert("ERROR");
+}
+
+/*
+    теперь будем отправлять через форму.
+    собирать вручную данные нет необходимости
 
 function getArrayFromTdData(array) {
     retArr = {};
@@ -52,3 +105,5 @@ function getArrayFromTdData(array) {
 
     return JSON.stringify(retArr);
 }
+
+*/
