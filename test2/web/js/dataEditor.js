@@ -46,11 +46,17 @@ function onRequiredInfoLoaded(data) {
             if (this.id === 'FirstSubject' || this.id === 'SecondSubject' || this.id === 'ThirdSubject')
                 firstKey = 'ListOfSubjects';
 
+            selectedId = $(this).attr('value');
+
             str = "<select form = 'mainSendForm' name='" + this.id + "'>";
             for (key in serverAnswer[firstKey]) {
                 key = parseInt(key);
 
-                str += "<option value='" + key + "'>";
+                if (selectedId == key)
+                    str += "<option selected value='" + key + "'>";
+                else
+                    str += "<option value='" + key + "'>";
+
                 str += serverAnswer[firstKey][key] + "</option>";
             }
             str += "</select>";

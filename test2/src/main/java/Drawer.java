@@ -99,7 +99,7 @@ public class Drawer {
         stringBuilder.append("<tr><td>Адрес</td>          <td class='send editable'     id='Address'>" + abiturient.getAddress() + "</td></tr>");
         stringBuilder.append("<tr><td>Номер паспорта</td> <td class='send editable'     id='Passport'>" + abiturient.getPassport() + "</td></tr>");
         stringBuilder.append("<tr><td>Факультет</td>      <td class='send         '     id='IdFaculty'><a href='/faculties?currFacultyId=" + abiturient.getSpeciality().getIdFaculty() + "'>" + abiturient.getSpeciality().getFaculty().getName() + "</a></td></tr>");
-        stringBuilder.append("<tr><td>Специальность</td>  <td class='send selectable'   id='IdSpeciality'><a href='/specialities?currSpecialityId=" + abiturient.getIdSpeciality() + "'>" + abiturient.getSpeciality().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Специальность</td>  <td class='send selectable'   id='IdSpeciality' value='" + abiturient.getIdSpeciality() + "'><a href='/specialities?currSpecialityId=" + abiturient.getIdSpeciality() + "'>" + abiturient.getSpeciality().getName() + "</a></td></tr>");
 
         stringBuilder.append("</table>");
         return stringBuilder.toString();
@@ -125,10 +125,10 @@ public class Drawer {
 
         stringBuilder.append("<tr><td>ID</td>       <td class = 'send non-editable ' id = 'IdSpeciality'>" + speciality.getIdSpeciality() + "</td></tr>");
         stringBuilder.append("<tr><td>Название</td> <td class = 'send editable     ' id = 'Name'>" + speciality.getName() + "</td></tr>");
-        stringBuilder.append("<tr><td>Факультет</td><td class = 'send selectable   ' id = 'IdFaculty'><a href='/faculties?currFacultyId=" + speciality.getIdFaculty() + "'>" + speciality.getFaculty().getName() + "</a></td></tr>");
-        stringBuilder.append("<tr><td>Предмет 1</td><td class = 'send selectable   ' id = 'FirstSubject'><a href='/subjects?currSubjectId=" + speciality.getFirstSubject() + "'>" + speciality.getSubject1().getName() + "</a></td></tr>");
-        stringBuilder.append("<tr><td>Предмет 2</td><td class = 'send selectable   ' id = 'SecondSubject'><a href='/subjects?currSubjectId=" + speciality.getSecondSubject() + "'>" + speciality.getSubject2().getName() + "</a></td></tr>");
-        stringBuilder.append("<tr><td>Предмет 3</td><td class = 'send selectable   ' id = 'ThirdSubject'><a href='/subjects?currSubjectId=" + speciality.getThirdSubject() + "'>" + speciality.getSubject3().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Факультет</td><td class = 'send selectable   ' id = 'IdFaculty' value='" + speciality.getIdFaculty() + "'><a href='/faculties?currFacultyId=" + speciality.getIdFaculty() + "'>" + speciality.getFaculty().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Предмет 1</td><td class = 'send selectable   ' id = 'FirstSubject' value='" + speciality.getFirstSubject() + "'><a href='/subjects?currSubjectId=" + speciality.getFirstSubject() + "'>" + speciality.getSubject1().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Предмет 2</td><td class = 'send selectable   ' id = 'SecondSubject' value='" + speciality.getSecondSubject() + "'><a href='/subjects?currSubjectId=" + speciality.getSecondSubject() + "'>" + speciality.getSubject2().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Предмет 3</td><td class = 'send selectable   ' id = 'ThirdSubject' value='" + speciality.getThirdSubject() + "'><a href='/subjects?currSubjectId=" + speciality.getThirdSubject() + "'>" + speciality.getSubject3().getName() + "</a></td></tr>");
 
         stringBuilder.append("</table>");
         return stringBuilder.toString();
