@@ -89,7 +89,7 @@ public class Drawer {
         stringBuilder.append("<tr><td>Дата рождения</td>  <td class='send editable'     id='BirthDay'>" + abiturient.getBirthDay().toString() + "</td></tr>");
         stringBuilder.append("<tr><td>Адрес</td>          <td class='send editable'     id='Address'>" + abiturient.getAddress() + "</td></tr>");
         stringBuilder.append("<tr><td>Номер паспорта</td> <td class='send editable'     id='Passport'>" + abiturient.getPassport() + "</td></tr>");
-        stringBuilder.append("<tr><td>Факультет</td>      <td class='send selectable'   id='IdFaculty'><a href='/faculties?currFacultyId=" + abiturient.getSpeciality().getIdFaculty() + "'>" + abiturient.getSpeciality().getFaculty().getName() + "</a></td></tr>");
+        stringBuilder.append("<tr><td>Факультет</td>      <td class='send         '     id='IdFaculty'><a href='/faculties?currFacultyId=" + abiturient.getSpeciality().getIdFaculty() + "'>" + abiturient.getSpeciality().getFaculty().getName() + "</a></td></tr>");
         stringBuilder.append("<tr><td>Специальность</td>  <td class='send selectable'   id='IdSpeciality'><a href='/specialities?currSpecialityId=" + abiturient.getIdSpeciality() + "'>" + abiturient.getSpeciality().getName() + "</a></td></tr>");
 
         stringBuilder.append("</table>");
