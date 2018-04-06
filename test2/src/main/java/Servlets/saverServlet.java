@@ -23,6 +23,8 @@ public class saverServlet extends HttpServlet {
         //super.doPost(req, resp);
 
         req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+
         PrintWriter out = resp.getWriter();
         HashMap<String, Object> parameters = rebasePostParamsIntoArrayOfValues(req.getParameterMap());
 
@@ -31,7 +33,7 @@ public class saverServlet extends HttpServlet {
 
         //если данные не пришли
         if (ProjectFunctions.isEmptyOrNull(objectType) || ProjectFunctions.isEmptyOrNull(task)) {
-            out.println("Error: input data wrong");
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
             return;
         }
 
@@ -43,17 +45,17 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
 
                 if (daoAbiturient.updateAbiturient(abiturient)) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
 
             if (task.equals("delete")) {
                 if (daoAbiturient.deleteAbiturientById(Long.parseLong(parameters.get("id").toString()))) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
         }
@@ -66,17 +68,17 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
 
                 if (daoSpeciality.updateSpeciality(speciality)) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
 
             if (task.equals("delete")) {
                 if (daoSpeciality.deleteSpecialityById(Long.parseLong(parameters.get("id").toString()))) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
         }
