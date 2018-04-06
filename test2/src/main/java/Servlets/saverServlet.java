@@ -1,12 +1,10 @@
 package main.java.Servlets;
 
-import main.java.Abiturient;
+import main.java.*;
 import main.java.DAO.DAOAbiturient;
+import main.java.DAO.DAOFaculty;
 import main.java.DAO.DAOSpeciality;
 import main.java.DAO.DAOSubject;
-import main.java.ProjectFunctions;
-import main.java.Speciality;
-import main.java.Subject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +53,29 @@ public class saverServlet extends HttpServlet {
 
             if (task.equals("delete")) {
                 if (daoAbiturient.deleteAbiturientById(Long.parseLong(parameters.get("id").toString()))) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+        }
+
+        if (objectType.equals("Faculty")) {
+            DAOFaculty daoFaculty = new DAOFaculty();
+
+            if (task.equals("update")) {
+                Faculty faculty = new Faculty();
+                ProjectFunctions.tryFillObjectByDbArray(faculty, parameters);
+
+                if (daoFaculty.updateFaculty(faculty)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
+            if (task.equals("delete")) {
+                if (daoFaculty.deleteFacultyById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
                     req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);

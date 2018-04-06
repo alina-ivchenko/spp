@@ -43,4 +43,30 @@ public class DAOFaculty extends DAO {
 
         return faculties;
     }
+
+    public boolean updateFaculty(Faculty faculty) {
+        if (faculty == null)
+            return false;
+
+        PreparedStatement preparedStatement = currConnection.prepareStatement("UPDATE `faculty` SET `Name`=? WHERE `Id_Faculty`=?");
+        try {
+            preparedStatement.setString(1, faculty.getName());
+            preparedStatement.setLong(2, faculty.getIdFaculty());
+        } catch (SQLException e) {
+            return false;
+        }
+
+        return currConnection.queryDataEdit(preparedStatement);
+    }
+
+    public boolean deleteFacultyById(long id) {
+        PreparedStatement preparedStatement = currConnection.prepareStatement("DELETE FROM `faculty` WHERE `Id_Faculty` = ?");
+        try {
+            preparedStatement.setLong(1, id);
+        } catch (SQLException e) {
+            return false;
+        }
+
+        return currConnection.queryDataEdit(preparedStatement);
+    }
 }

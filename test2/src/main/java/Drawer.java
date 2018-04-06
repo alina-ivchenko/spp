@@ -63,8 +63,8 @@ public class Drawer {
     public static String drawCurrFaculty(Faculty faculty) {
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
 
-        stringBuilder.append("<tr><td>ID</td><td>" + faculty.getIdFaculty() + "</td></tr>");
-        stringBuilder.append("<tr><td>Название</td><td>" + faculty.getName() + "</td></tr>");
+        stringBuilder.append("<tr><td>ID</td>      <td class = 'send non-editable' id='IdFaculty'>" + faculty.getIdFaculty() + "</td></tr>");
+        stringBuilder.append("<tr><td>Название</td><td class = 'send editable'     id='Name'>" + faculty.getName() + "</td></tr>");
 
         stringBuilder.append("</table>");
         return stringBuilder.toString();
