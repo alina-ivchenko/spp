@@ -3,8 +3,10 @@ package main.java.Servlets;
 import com.google.gson.Gson;
 import main.java.DAO.DAOFaculty;
 import main.java.DAO.DAOSpeciality;
+import main.java.DAO.DAOSubject;
 import main.java.Faculty;
 import main.java.Speciality;
+import main.java.Subject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,14 +53,31 @@ public class getInfoServlet extends HttpServlet {
             if (tasks.get(i).equals("ListOfFaculties")) {
                 DAOFaculty daoFaculty = new DAOFaculty();
                 List<Faculty> faculties = daoFaculty.getAllFaculties();
-
-                HashMap<Long, String> sendValues = new HashMap<>();
                 //String retStr = gson.toJson(getHashMapOfSpecialities(specialities), HashMap.class);
                 retMap.put(tasks.get(i), getHashMapOfFaculties(faculties));
+            }
+
+            if (tasks.get(i).equals("ListOfSubjects")) {
+                DAOSubject daoSubject = new DAOSubject();
+                List<Subject> subjects = daoSubject.getAllSubjects();
+
+                //String retStr = gson.toJson(getHashMapOfSpecialities(specialities), HashMap.class);
+                retMap.put(tasks.get(i), getHashMapOfSubjects(subjects));
             }
         }
         String str = gson.toJson(retMap);
         out.print(str);
+    }
+
+    private HashMap<Long, String> getHashMapOfSubjects(List<Subject> subjects) {
+        HashMap<Long, String> values = new HashMap<>();
+        if (subjects == null)
+            return values;
+
+        for (int i = 0; i < subjects.size(); i++)
+            values.put(subjects.get(i).getIdSubject(), subjects.get(i).getName());
+
+        return values;
     }
 
     private HashMap<Long, String> getHashMapOfSpecialities(List<Speciality> specialities) {

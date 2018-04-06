@@ -37,12 +37,7 @@
     <div style="clear: both"></div>
 </div>
 
-<form style="display: none"
-      method="post"
-      id="mainSendForm"
-      name="mainSendForm"
-      action="/saver">
-</form>
+<%out.print(Drawer.drawMainSaveForm());%>
 
 </body>
 </html>

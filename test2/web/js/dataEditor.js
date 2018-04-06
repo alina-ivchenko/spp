@@ -43,6 +43,8 @@ function onRequiredInfoLoaded(data) {
                 firstKey = 'ListOfSpecialities';
             if (this.id === 'IdFaculty')
                 firstKey = 'ListOfFaculties';
+            if (this.id === 'FirstSubject' || this.id === 'SecondSubject' || this.id === 'ThirdSubject')
+                firstKey = 'ListOfSubjects';
 
             str = "<select form = 'mainSendForm' name='" + this.id + "'>";
             for (key in serverAnswer[firstKey]) {
