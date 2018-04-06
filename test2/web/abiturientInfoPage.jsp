@@ -13,6 +13,7 @@
 
 <%
     out.print(Drawer.drawHeader("Студент"));
+    Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
 %>
 
 <div class="mainContainer">
@@ -20,11 +21,14 @@
         <button id="editBtn" onclick="onEditBtnClick(['ListOfSpecialities','ListOfFaculties'])">Редактировать</button>
         <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Abiturient')" style="display: none">Сохранить
         </button>
-        <button>Удалить</button>
+
+        <button onclick="onDeleteButtonClick('Abiturient',<%out.print(abiturient.getIdAbiturient());%>)">
+            Удалить
+        </button>
     </div>
     <div class="content">
         <%
-            Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
+
             if (abiturient != null) {
                 out.print(Drawer.drawCurrAbiturient(abiturient));
             }

@@ -1,3 +1,11 @@
+function onDeleteButtonClick(objectType, id) {
+    //пока что не асинхронно
+    $('#mainSendForm').append("<input name='task' value='delete'>")
+        .append("<input name='objectType' value='" + objectType + "'>")
+        .append("<input name='id' value='" + id + "'>")
+        .submit();
+}
+
 function onEditBtnClick(tasks) {
     //taskStr определяет, нужно ли что-то подгружать дополнительно
     //перед началом изменения. например, чтобы получить список всех
