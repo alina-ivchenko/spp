@@ -37,7 +37,7 @@ public class AuthorisationFilter implements Filter {
 
         //пропускаем проверку авторизации для перечисленных страниц
         String url = ((HttpServletRequest) servletRequest).getRequestURI();
-        if (url.equals("/login") || url.equals("/")) {
+        if (url.equals("/login") || url.equals("/") || url.startsWith("/css") || url.startsWith("/js") || url.startsWith("/img")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
@@ -46,7 +46,7 @@ public class AuthorisationFilter implements Filter {
         Authorisation authorisation = new Authorisation();
         User authorisedUser = authorisation.getAuthorisedUser((HttpServletRequest) servletRequest);
         if (authorisedUser == null) {
-            ((HttpServletResponse)servletResponse).sendRedirect("/login");
+            ((HttpServletResponse) servletResponse).sendRedirect("/login");
             return;
         }
 

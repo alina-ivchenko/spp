@@ -1,16 +1,16 @@
-function onEditBtnClick(taskStr) {
+function onEditBtnClick(tasks) {
     //taskStr определяет, нужно ли что-то подгружать дополнительно
     //перед началом изменения. например, чтобы получить список всех
     //специальностей, нужно передать в taskStr 'ListOfSpecialities'
     //если ничего не нужно, ничего и не передаём
 
-    if (taskStr === null)
+    if (tasks === null || tasks.length === 0)
         onRequiredInfoLoaded();
     else
         $.post(
             "/getInfo",
             {
-                task: taskStr
+                tasks: JSON.stringify(tasks)
             },
             onRequiredInfoLoaded
         );
@@ -30,12 +30,18 @@ function onRequiredInfoLoaded(data) {
             $(this).wrapInner("<textarea class='editTextarea readonly' form='mainSendForm' name='" + this.id + "' readonly='readonly'></textarea>");
 
         if ($(this).hasClass('selectable')) {
+
+            if (this.id === 'IdSpeciality')
+                firstKey = 'ListOfSpecialities';
+            if (this.id === 'IdFaculty')
+                firstKey = 'ListOfFaculties';
+
             str = "<select form = 'mainSendForm' name='" + this.id + "'>";
-            for (key in serverAnswer) {
+            for (key in serverAnswer[firstKey]) {
                 key = parseInt(key);
 
                 str += "<option value='" + key + "'>";
-                str += serverAnswer[key] + "</option>";
+                str += serverAnswer[firstKey][key] + "</option>";
             }
             str += "</select>";
             $(this).html(str)
