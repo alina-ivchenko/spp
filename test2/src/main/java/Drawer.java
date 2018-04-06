@@ -40,8 +40,8 @@ public class Drawer {
     public static String drawCurrSubject(Subject subject) {
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
 
-        stringBuilder.append("<tr><td>ID</td><td>" + subject.getIdSubject() + "</td></tr>");
-        stringBuilder.append("<tr><td>Название</td><td>" + subject.getName() + "</td></tr>");
+        stringBuilder.append("<tr><td>ID</td>      <td class='send non-editable' id='IdSubject'>" + subject.getIdSubject() + "</td></tr>");
+        stringBuilder.append("<tr><td>Название</td><td class='send editable'     id='Name'     >" + subject.getName() + "</td></tr>");
 
         stringBuilder.append("</table>");
         return stringBuilder.toString();
