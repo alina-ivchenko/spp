@@ -2,7 +2,9 @@ package main.java.Servlets;
 
 import main.java.Abiturient;
 import main.java.DAO.DAOAbiturient;
+import main.java.DAO.DAOSpeciality;
 import main.java.ProjectFunctions;
+import main.java.Speciality;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,11 +37,43 @@ public class saverServlet extends HttpServlet {
 
         if (objectType.equals("Abiturient")) {
             DAOAbiturient daoAbiturient = new DAOAbiturient();
-            Abiturient abiturient = new Abiturient();
-            ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
 
             if (task.equals("update")) {
+                Abiturient abiturient = new Abiturient();
+                ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
+
                 if (daoAbiturient.updateAbiturient(abiturient)) {
+                    out.println("OK");
+                } else {
+                    out.println("Error: db array");
+                }
+            }
+
+            if (task.equals("delete")) {
+                if (daoAbiturient.deleteAbiturientById(Long.parseLong(parameters.get("id").toString()))) {
+                    out.println("OK");
+                } else {
+                    out.println("Error: db array");
+                }
+            }
+        }
+
+        if (objectType.equals("Speciality")) {
+            DAOSpeciality daoSpeciality = new DAOSpeciality();
+
+            if (task.equals("update")) {
+                Speciality speciality = new Speciality();
+                ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
+
+                if (daoSpeciality.updateSpeciality(speciality)) {
+                    out.println("OK");
+                } else {
+                    out.println("Error: db array");
+                }
+            }
+
+            if (task.equals("delete")) {
+                if (daoSpeciality.deleteSpecialityById(Long.parseLong(parameters.get("id").toString()))) {
                     out.println("OK");
                 } else {
                     out.println("Error: db array");
@@ -62,5 +96,4 @@ public class saverServlet extends HttpServlet {
 
         return parameters;
     }
-
 }

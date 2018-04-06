@@ -74,4 +74,14 @@ public class DAOAbiturient extends DAO {
 
         return currConnection.queryDataEdit(preparedStatement);
     }
+
+    public boolean deleteAbiturientById(long id) {
+        PreparedStatement preparedStatement = currConnection.prepareStatement("DELETE FROM `abiturient` WHERE `Id_Abiturient` = ?");
+        try {
+            preparedStatement.setLong(1, id);
+        } catch (SQLException e) {
+            return false;
+        }
+        return currConnection.queryDataEdit(preparedStatement);
+    }
 }

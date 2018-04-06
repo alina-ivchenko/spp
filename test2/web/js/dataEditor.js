@@ -1,3 +1,11 @@
+function onDeleteButtonClick(objectType, id) {
+    //пока что не асинхронно
+    $('#mainSendForm').append("<input name='task' value='delete'>")
+        .append("<input name='objectType' value='" + objectType + "'>")
+        .append("<input name='id' value='" + id + "'>")
+        .submit();
+}
+
 function onEditBtnClick(tasks) {
     //taskStr определяет, нужно ли что-то подгружать дополнительно
     //перед началом изменения. например, чтобы получить список всех
@@ -35,12 +43,20 @@ function onRequiredInfoLoaded(data) {
                 firstKey = 'ListOfSpecialities';
             if (this.id === 'IdFaculty')
                 firstKey = 'ListOfFaculties';
+            if (this.id === 'FirstSubject' || this.id === 'SecondSubject' || this.id === 'ThirdSubject')
+                firstKey = 'ListOfSubjects';
+
+            selectedId = $(this).attr('value');
 
             str = "<select form = 'mainSendForm' name='" + this.id + "'>";
             for (key in serverAnswer[firstKey]) {
                 key = parseInt(key);
 
-                str += "<option value='" + key + "'>";
+                if (selectedId == key)
+                    str += "<option selected value='" + key + "'>";
+                else
+                    str += "<option value='" + key + "'>";
+
                 str += serverAnswer[firstKey][key] + "</option>";
             }
             str += "</select>";
