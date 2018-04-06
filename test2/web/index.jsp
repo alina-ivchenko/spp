@@ -17,7 +17,7 @@
 </p>
 
 <p>
-    <a href="/abiturients">Список студентов</a>
+    <a href="/abiturients">Список абитуриентов</a>
 </p>
 
 <p>

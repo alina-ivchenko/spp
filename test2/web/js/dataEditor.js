@@ -12,7 +12,7 @@ function onEditBtnClick(tasks) {
     //специальностей, нужно передать в taskStr 'ListOfSpecialities'
     //если ничего не нужно, ничего и не передаём
 
-    if (tasks === null || tasks.length === 0)
+    if (typeof tasks === 'undefined' || tasks.length === 0)
         onRequiredInfoLoaded();
     else
         $.post(
@@ -26,7 +26,7 @@ function onEditBtnClick(tasks) {
 
 //продолжение запустится сразу, как подкгрзятся данные
 function onRequiredInfoLoaded(data) {
-    if (data !== null && data !== 'Error')
+    if (typeof data !== 'undefined' && data !== null && data !== 'Error')
         var serverAnswer = JSON.parse(data);
 
     $('.send').each(function (index, value) {

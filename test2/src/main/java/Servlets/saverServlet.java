@@ -1,10 +1,10 @@
 package main.java.Servlets;
 
-import main.java.Abiturient;
+import main.java.*;
 import main.java.DAO.DAOAbiturient;
+import main.java.DAO.DAOFaculty;
 import main.java.DAO.DAOSpeciality;
-import main.java.ProjectFunctions;
-import main.java.Speciality;
+import main.java.DAO.DAOSubject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +23,8 @@ public class saverServlet extends HttpServlet {
         //super.doPost(req, resp);
 
         req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+
         PrintWriter out = resp.getWriter();
         HashMap<String, Object> parameters = rebasePostParamsIntoArrayOfValues(req.getParameterMap());
 
@@ -31,7 +33,7 @@ public class saverServlet extends HttpServlet {
 
         //если данные не пришли
         if (ProjectFunctions.isEmptyOrNull(objectType) || ProjectFunctions.isEmptyOrNull(task)) {
-            out.println("Error: input data wrong");
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
             return;
         }
 
@@ -43,17 +45,63 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
 
                 if (daoAbiturient.updateAbiturient(abiturient)) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
 
             if (task.equals("delete")) {
                 if (daoAbiturient.deleteAbiturientById(Long.parseLong(parameters.get("id").toString()))) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+        }
+
+        if (objectType.equals("Faculty")) {
+            DAOFaculty daoFaculty = new DAOFaculty();
+
+            if (task.equals("update")) {
+                Faculty faculty = new Faculty();
+                ProjectFunctions.tryFillObjectByDbArray(faculty, parameters);
+
+                if (daoFaculty.updateFaculty(faculty)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
+            if (task.equals("delete")) {
+                if (daoFaculty.deleteFacultyById(Long.parseLong(parameters.get("id").toString()))) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+        }
+
+        if (objectType.equals("Subject")) {
+            DAOSubject daoSubject = new DAOSubject();
+
+            if (task.equals("update")) {
+                Subject subject = new Subject();
+                ProjectFunctions.tryFillObjectByDbArray(subject, parameters);
+
+                if (daoSubject.updateSubject(subject)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
+            if (task.equals("delete")) {
+                if (daoSubject.deleteSubjectById(Long.parseLong(parameters.get("id").toString()))) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
         }
@@ -66,17 +114,17 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
 
                 if (daoSpeciality.updateSpeciality(speciality)) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
 
             if (task.equals("delete")) {
                 if (daoSpeciality.deleteSpecialityById(Long.parseLong(parameters.get("id").toString()))) {
-                    out.println("OK");
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
-                    out.println("Error: db array");
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
                 }
             }
         }

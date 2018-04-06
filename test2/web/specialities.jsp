@@ -17,10 +17,6 @@
 
 <div class="mainContainer">
     <div class="menu">
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
     </div>
     <div class="content">
         <%

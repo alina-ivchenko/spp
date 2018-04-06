@@ -44,4 +44,27 @@ public class DAOSubject extends DAO {
 
         return subjects;
     }
+
+    public boolean updateSubject(Subject subject) {
+        if (subject == null)
+            return false;
+        PreparedStatement preparedStatement = currConnection.prepareStatement("UPDATE `subject` SET `Name`=? WHERE `Id_Subject`=?");
+        try {
+            preparedStatement.setString(1, subject.getName());
+            preparedStatement.setLong(2, subject.getIdSubject());
+        } catch (SQLException e) {
+            return false;
+        }
+        return currConnection.queryDataEdit(preparedStatement);
+    }
+
+    public boolean deleteSubjectById(long id) {
+        PreparedStatement preparedStatement = currConnection.prepareStatement("DELETE FROM `subject` WHERE `Id_Subject`=?");
+        try {
+            preparedStatement.setLong(1, id);
+        } catch (SQLException e) {
+            return false;
+        }
+        return currConnection.queryDataEdit(preparedStatement);
+    }
 }

@@ -28,7 +28,6 @@
     </div>
     <div class="content">
         <%
-
             if (abiturient != null) {
                 out.print(Drawer.drawCurrAbiturient(abiturient));
             }
