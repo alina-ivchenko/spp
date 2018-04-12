@@ -151,6 +151,17 @@ public class saverServlet extends HttpServlet {
                 }
             }
 
+            if (task.equals("add")) {
+                Subject subject = new Subject();
+                ProjectFunctions.tryFillObjectByDbArray(subject, parameters);
+
+                if (daoSubject.addSubject(subject)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
             if (task.equals("delete")) {
                 if (daoSubject.deleteSubjectById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);

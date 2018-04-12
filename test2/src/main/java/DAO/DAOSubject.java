@@ -58,6 +58,23 @@ public class DAOSubject extends DAO {
         return currConnection.queryDataEdit(preparedStatement);
     }
 
+    public boolean addSubject(Subject subject) {
+        if (subject == null)
+            return false;
+        PreparedStatement preparedStatement = currConnection.prepareStatement("INSERT INTO `subject`(`Name`) VALUES (?)");
+        try {
+            preparedStatement.setString(1, subject.getName());
+        } catch (SQLException e) {
+            return false;
+        }
+
+        boolean queryIsOk = currConnection.queryDataEdit(preparedStatement);
+        if (queryIsOk) {
+            subject.setIdSubject(currConnection.getLastAddedId(preparedStatement));
+        }
+        return queryIsOk;
+    }
+
     public boolean deleteSubjectById(long id) {
         PreparedStatement preparedStatement = currConnection.prepareStatement("DELETE FROM `subject` WHERE `Id_Subject`=?");
         try {

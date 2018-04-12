@@ -35,9 +35,13 @@ public class addObjectServlet extends HttpServlet {
             return;
         }
 
-
         if (objectType.equals("Speciality")) {
             req.getRequestDispatcher("/addSpecialityPage.jsp").forward(req, resp);
+            return;
+        }
+
+        if (objectType.equals("Subject")) {
+            req.getRequestDispatcher("/addSubjectPage.jsp").forward(req, resp);
             return;
         }
     }
