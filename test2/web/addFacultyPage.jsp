@@ -1,10 +1,4 @@
-<%@ page import="main.java.Drawer" %><%--
-  Created by IntelliJ IDEA.
-  User: Yarad
-  Date: 12.04.2018
-  Time: 17:26
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="main.java.Drawer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

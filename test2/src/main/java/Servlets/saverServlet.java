@@ -174,6 +174,17 @@ public class saverServlet extends HttpServlet {
                 }
             }
 
+            if (task.equals("add")) {
+                Speciality speciality = new Speciality();
+                ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
+
+                if (daoSpeciality.addSpeciality(speciality)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
             if (task.equals("delete")) {
                 if (daoSpeciality.deleteSpecialityById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);

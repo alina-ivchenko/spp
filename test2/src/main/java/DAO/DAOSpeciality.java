@@ -94,4 +94,25 @@ public class DAOSpeciality extends DAO {
 
         return specialities;
     }
+
+    public boolean addSpeciality(Speciality speciality) {
+        if (speciality == null)
+            return false;
+        PreparedStatement preparedStatement = currConnection.prepareStatement("INSERT INTO `speciality`(`Name`, `Id_Faculty`, `First_Subject`, `Second_Subject`, `Third_Subject`) VALUES (?,?,?,?,?)");
+        try {
+            preparedStatement.setString(1, speciality.getName());
+            preparedStatement.setLong(2, speciality.getIdFaculty());
+            preparedStatement.setLong(3, speciality.getFirstSubject());
+            preparedStatement.setLong(4, speciality.getSecondSubject());
+            preparedStatement.setLong(5, speciality.getThirdSubject());
+        } catch (SQLException e) {
+            return false;
+        }
+
+        boolean queryIsOk = currConnection.queryDataEdit(preparedStatement);
+        if (queryIsOk) {
+            speciality.setIdSpeciality(currConnection.getLastAddedId(preparedStatement));
+        }
+        return queryIsOk;
+    }
 }

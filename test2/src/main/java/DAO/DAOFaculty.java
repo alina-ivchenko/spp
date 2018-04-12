@@ -81,6 +81,10 @@ public class DAOFaculty extends DAO {
             return false;
         }
 
-        return currConnection.queryDataEdit(preparedStatement);
+        boolean queryIsOk = currConnection.queryDataEdit(preparedStatement);
+        if (queryIsOk) {
+            faculty.setIdFaculty(currConnection.getLastAddedId(preparedStatement));
+        }
+        return queryIsOk;
     }
 }
