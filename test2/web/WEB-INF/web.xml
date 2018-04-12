@@ -5,6 +5,11 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
+        <servlet-name>addObjectServlet</servlet-name>
+        <servlet-class>main.java.Servlets.addObjectServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>main.java.Servlets.loginServlet</servlet-class>
     </servlet>
@@ -47,6 +52,11 @@
     <servlet-mapping>
         <servlet-name>getInfoServlet</servlet-name>
         <url-pattern>/getInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>addObjectServlet</servlet-name>
+        <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

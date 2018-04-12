@@ -25,7 +25,7 @@ public class saverServlet extends HttpServlet {
             return;
         }
     }
-    
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,6 +77,17 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
 
                 if (daoAbiturient.updateAbiturient(abiturient)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
+            if (task.equals("add")) {
+                Abiturient abiturient = new Abiturient();
+                ProjectFunctions.tryFillObjectByDbArray(abiturient, parameters);
+
+                if (daoAbiturient.addAbiturient(abiturient)) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
                     req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);

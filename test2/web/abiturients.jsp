@@ -26,7 +26,7 @@
             User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
-        <button class='menuButton'>Добавить абитуриента</button>
+        <a href="/add?objectType=Abiturient" class='menuButton'>Добавить абитуриента</a>
         <%
             }
         %>
