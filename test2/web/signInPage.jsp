@@ -28,15 +28,15 @@
       id="mainSendForm"
       name="mainSendForm"
       action="saver">
-    <input name="login" type="text" value="Логин">
+    <input name="Login" type="text" value="Логин">
     <span>Введите пароль:</span>
-    <input name="password" id="password1" type="password" value="password">
+    <input name="Password_Hash" id="password1" type="password" value="password">
 
     <span>Введите пароль повторно</span>
     <input type="password" id="password2" value="password">
 
     <span>Введите почту</span>
-    <input name="email" type="email">
+    <input name="Email" type="email">
 
     <!-- Вспомогательные -->
     <input name="task" type="text" style="display: none;" value="sign_in">
