@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <title>Главная</title>
     <link rel="stylesheet" href="css/common.css">
+    <script src="js/main.js"></script>
 </head>
 <body>
 
