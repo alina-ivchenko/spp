@@ -117,6 +117,17 @@ public class saverServlet extends HttpServlet {
                 }
             }
 
+            if (task.equals("add")) {
+                Faculty faculty = new Faculty();
+                ProjectFunctions.tryFillObjectByDbArray(faculty, parameters);
+
+                if (daoFaculty.addFaculty(faculty)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
             if (task.equals("delete")) {
                 if (daoFaculty.deleteFacultyById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);

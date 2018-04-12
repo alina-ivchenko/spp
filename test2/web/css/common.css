@@ -28,7 +28,7 @@ body {
     /*margin: 0px;
     background-color: #F2906B;*/
 
-    background:  Thistle;
+    background: Thistle;
     backgroung-size: cover;
     background-attachment: fixed;
 }
@@ -50,7 +50,7 @@ h2 {
     float: left;
 }
 
-.menu .menuButton {
+.menu .menuButton, .menu button {
     display: inline-block;
     margin: 5%;
     width: 90%;
@@ -64,12 +64,11 @@ h2 {
     text-align: center;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-a
-{
+a {
     text-decoration: none;
     border-radius: 15%;
     padding: 10px;
@@ -78,19 +77,16 @@ a
     -webkit-transition: all 0.6s 0.01s ease;
 }
 
-a:link
-{
-    color : Indigo;
+a:link {
+    color: Indigo;
     padding: 2px;
 }
 
-a:visited
-{
-    color : MediumSlateBlue;
+a:visited {
+    color: MediumSlateBlue;
 }
 
-a:hover
-{
+a:hover {
     background: BlueViolet;
     color: PaleGreen;
 }
