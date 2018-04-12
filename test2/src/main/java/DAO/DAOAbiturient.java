@@ -103,6 +103,10 @@ public class DAOAbiturient extends DAO {
             return false;
         }
 
-        return currConnection.queryDataEdit(preparedStatement);
+        boolean queryIsOk = currConnection.queryDataEdit(preparedStatement);
+        if (queryIsOk) {
+            abiturient.setIdAbiturient(currConnection.getLastAddedId(preparedStatement));
+        }
+        return queryIsOk;
     }
 }

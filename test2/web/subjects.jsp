@@ -24,7 +24,7 @@
             User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
-        <button class="menuButton">Добавить предмет</button>
+        <a href="/add?objectType=Subject" class="menuButton">Добавить предмет</a>
         <%}%>
     </div>
     <div class="content">

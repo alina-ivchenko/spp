@@ -14,9 +14,11 @@
     <script src="js/main.js"></script>
 </head>
 <body>
+
 <%
     out.print(Drawer.drawHeader("Факультеты"));
 %>
+
 <div class="mainContainer">
 
     <div class="menu">
@@ -25,7 +27,7 @@
             User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
-        <button class="menuButton">Добавить факультет</button>
+        <a href="/add?objectType=Faculty" class="menuButton">Добавить факультет</a>
         <%}%>
     </div>
     <div class="content">

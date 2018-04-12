@@ -69,4 +69,22 @@ public class DAOFaculty extends DAO {
 
         return currConnection.queryDataEdit(preparedStatement);
     }
+
+    public boolean addFaculty(Faculty faculty) {
+        if (faculty == null)
+            return false;
+
+        PreparedStatement preparedStatement = currConnection.prepareStatement("INSERT INTO `faculty`(`Name`) VALUES (?)");
+        try {
+            preparedStatement.setString(1, faculty.getName());
+        } catch (SQLException e) {
+            return false;
+        }
+
+        boolean queryIsOk = currConnection.queryDataEdit(preparedStatement);
+        if (queryIsOk) {
+            faculty.setIdFaculty(currConnection.getLastAddedId(preparedStatement));
+        }
+        return queryIsOk;
+    }
 }

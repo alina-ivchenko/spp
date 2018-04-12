@@ -117,6 +117,17 @@ public class saverServlet extends HttpServlet {
                 }
             }
 
+            if (task.equals("add")) {
+                Faculty faculty = new Faculty();
+                ProjectFunctions.tryFillObjectByDbArray(faculty, parameters);
+
+                if (daoFaculty.addFaculty(faculty)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
             if (task.equals("delete")) {
                 if (daoFaculty.deleteFacultyById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
@@ -140,6 +151,17 @@ public class saverServlet extends HttpServlet {
                 }
             }
 
+            if (task.equals("add")) {
+                Subject subject = new Subject();
+                ProjectFunctions.tryFillObjectByDbArray(subject, parameters);
+
+                if (daoSubject.addSubject(subject)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
             if (task.equals("delete")) {
                 if (daoSubject.deleteSubjectById(Long.parseLong(parameters.get("id").toString()))) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
@@ -157,6 +179,17 @@ public class saverServlet extends HttpServlet {
                 ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
 
                 if (daoSpeciality.updateSpeciality(speciality)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
+
+            if (task.equals("add")) {
+                Speciality speciality = new Speciality();
+                ProjectFunctions.tryFillObjectByDbArray(speciality, parameters);
+
+                if (daoSpeciality.addSpeciality(speciality)) {
                     req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
                 } else {
                     req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
