@@ -1,10 +1,7 @@
 package main.java.Servlets;
 
 import main.java.*;
-import main.java.DAO.DAOAbiturient;
-import main.java.DAO.DAOFaculty;
-import main.java.DAO.DAOSpeciality;
-import main.java.DAO.DAOSubject;
+import main.java.DAO.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +32,21 @@ public class saverServlet extends HttpServlet {
         if (ProjectFunctions.isEmptyOrNull(objectType) || ProjectFunctions.isEmptyOrNull(task)) {
             req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
             return;
+        }
+
+        if (objectType.equals("User")) {
+            DAOUser daoUser = new DAOUser();
+
+            if (task.equals("sign_in")) {
+                User user = new User();
+                ProjectFunctions.tryFillObjectByDbArray(user, parameters);
+
+                if (daoUser.addUser(user)) {
+                    req.getRequestDispatcher("/OkOperationPage.jsp").forward(req, resp);
+                } else {
+                    req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+                }
+            }
         }
 
         if (objectType.equals("Abiturient")) {

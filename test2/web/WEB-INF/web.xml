@@ -10,6 +10,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>signInServlet</servlet-name>
+        <servlet-class>main.java.Servlets.signInServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>abiturientsServlet</servlet-name>
         <servlet-class>main.java.Servlets.abiturientsServlet</servlet-class>
     </servlet>
@@ -67,6 +72,11 @@
     <servlet-mapping>
         <servlet-name>abiturientsServlet</servlet-name>
         <url-pattern>/abiturients</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>signInServlet</servlet-name>
+        <url-pattern>/sign_in</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
