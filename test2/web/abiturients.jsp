@@ -1,7 +1,8 @@
 <%@ page import="main.java.Abiturient" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
+<%@ page import="main.java.Authorisation" %>
 <%@ page import="main.java.Drawer" %>
+<%@ page import="main.java.User" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,10 +20,16 @@
 %>
 <div class="mainContainer">
     <div class="menu">
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
-        <button class="menuButton">Добавить абитуриента</button>
+
+        <%
+            Authorisation authorisation = new Authorisation();
+            User currUser = authorisation.getAuthorisedUser(request);
+            if (currUser.getRole() == 0) {
+        %>
+        <button class='menuButton'>Добавить абитуриента</button>
+        <%
+            }
+        %>
     </div>
     <div class="content">
         <%

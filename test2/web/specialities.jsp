@@ -1,5 +1,7 @@
+<%@ page import="main.java.Authorisation" %>
 <%@ page import="main.java.Drawer" %>
 <%@ page import="main.java.Speciality" %>
+<%@ page import="main.java.User" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -17,6 +19,13 @@
 
 <div class="mainContainer">
     <div class="menu">
+        <%
+            Authorisation authorisation = new Authorisation();
+            User currUser = authorisation.getAuthorisedUser(request);
+            if (currUser.getRole() == 0) {
+        %>
+        <button class="menuButton">Добавить специальность</button>
+        <%}%>
     </div>
     <div class="content">
         <%

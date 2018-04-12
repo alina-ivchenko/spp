@@ -16,6 +16,18 @@ import java.util.Set;
 public class saverServlet extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Authorisation authorisation = new Authorisation();
+        //если нет доступа
+        if (authorisation.getAuthorisedUser(req).getRole() != 0) {
+            req.getRequestDispatcher("/accessDeniedPage.jsp").forward(req, resp);
+            return;
+        }
+    }
+    
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp);
 
@@ -27,6 +39,14 @@ public class saverServlet extends HttpServlet {
 
         String task = req.getParameter("task");
         String objectType = req.getParameter("objectType");
+
+        Authorisation authorisation = new Authorisation();
+
+        //если нет доступа
+        if (authorisation.getAuthorisedUser(req).getRole() != 0) {
+            req.getRequestDispatcher("/accessDeniedPage.jsp").forward(req, resp);
+            return;
+        }
 
         //если данные не пришли
         if (ProjectFunctions.isEmptyOrNull(objectType) || ProjectFunctions.isEmptyOrNull(task)) {

@@ -1,5 +1,7 @@
 <%@ page import="main.java.Drawer" %>
 <%@ page import="main.java.Subject" %>
+<%@ page import="main.java.Authorisation" %>
+<%@ page import="main.java.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,6 +19,11 @@
 
 <div class="mainContainer">
     <div class="menu">
+        <%
+            Authorisation authorisation = new Authorisation();
+            User currUser = authorisation.getAuthorisedUser(request);
+            if (currUser.getRole() == 0) {
+        %>
         <button id="editBtn" onclick="onEditBtnClick()">Редактировать</button>
         <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Subject')" style="display: none">Сохранить
         </button>
@@ -24,6 +31,7 @@
         <button onclick="onDeleteButtonClick('Subject',<%out.print(subject.getIdSubject());%>)">
             Удалить
         </button>
+        <%}%>
     </div>
     <div class="content">
         <%

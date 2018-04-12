@@ -3,7 +3,25 @@ package main.java;
 import java.util.List;
 
 public class Drawer {
+    /*
+    public static String drawAdminLeftBarFunctionality(String jspPageName) {
 
+        if (jspPageName.equals("/abiturients.jsp"))
+            return "<button class='menuButton'>Добавить абитуриента</button>";
+
+        if (jspPageName.equals("/facultyInfoPage.jsp"))
+            return "<button id='editBtn' onclick=\"onEditBtnClick()\">Редактировать</button>\n" +
+                    "<button id='saveBtn' onclick=\"onSaveChangesBtnClick('update', 'Faculty')\" style='display: none'>Сохранить</button>\n" +
+                    "<button onclick=\"onDeleteButtonClick('Faculty',<%out.print(faculty.getIdFaculty());%>)\"> Удалить</button>";
+
+        if(jspPageName.equals("/abiturienInfoPage.jsp"))
+            return "<button id='editBtn' onclick=\"onEditBtnClick(['ListOfSpecialities','ListOfFaculties'])\">Редактировать</button>\n" +
+                    "        <button id='saveBtn' onclick=\"onSaveChangesBtnClick('update', 'Abiturient')\" style='display: none'>Сохранить</button>\n" +
+                    "        <button onclick=\"onDeleteButtonClick('Abiturient',<%out.print(abiturient.getIdAbiturient());%>)\"> Удалить</button>";
+        
+        return "";
+    }
+*/
     public static String drawMainSaveForm() {
         return "<form style=\"display: none\"\n" +
                 "      method=\"post\"\n" +
