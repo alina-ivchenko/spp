@@ -1,9 +1,12 @@
 function onDeleteButtonClick(objectType, id) {
     //пока что не асинхронно
-    $('#mainSendForm').append("<input name='task' value='delete'>")
-        .append("<input name='objectType' value='" + objectType + "'>")
-        .append("<input name='id' value='" + id + "'>")
-        .submit();
+    var res = confirm("Уверны?");
+    if (res) {
+        $('#mainSendForm').append("<input name='task' value='delete'>")
+            .append("<input name='objectType' value='" + objectType + "'>")
+            .append("<input name='id' value='" + id + "'>")
+            .submit();
+    }
 }
 
 function onEditBtnClick(tasks) {
