@@ -79,7 +79,7 @@ footer {
 nav {
     margin: 15px 0px;
     width: 59%;
-    float: inline-start;
+    float: left;
 }
 
 nav a {
