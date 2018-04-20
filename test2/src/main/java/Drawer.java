@@ -50,6 +50,13 @@ public class Drawer {
                 "</header>";
     }
 
+    public static String drawFooter(){
+        return "<footer>\n" +
+                "   <h2 class='footerLogo'>Abiturient<br>APP</h2>" +
+                "   <span class='footerLogo'>MadeBy:<br>BLACK_ELF | ALINA_IVCHENKO</span>" +
+                "</footer>\n";
+    }
+
     public static String drawShortListOfSubjects(List<Subject> subjects) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable tableWithClickableTrs'>");

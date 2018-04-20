@@ -13,5 +13,8 @@
     out.print(Drawer.drawHeader("Главная"));
 %>
 
+<%
+    out.print(Drawer.drawFooter());
+%>
 </body>
 </html>
