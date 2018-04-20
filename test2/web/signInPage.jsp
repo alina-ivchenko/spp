@@ -44,6 +44,8 @@
 
     <button type="button" onclick="provideCorrectInputs()">Зарегистрироваться</button>
 </form>
-
+<%
+    out.print(Drawer.drawFooter());
+%>
 </body>
 </html>

@@ -45,5 +45,9 @@
 
 <%out.print(Drawer.drawMainSaveForm());%>
 
+<%
+    out.print(Drawer.drawFooter());
+%>
+
 </body>
 </html>

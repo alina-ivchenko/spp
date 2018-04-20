@@ -1,5 +1,6 @@
 package main.java;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Drawer {
@@ -53,7 +54,8 @@ public class Drawer {
     public static String drawFooter(){
         return "<footer>\n" +
                 "   <h2 class='footerLogo'>Abiturient<br>APP</h2>" +
-                "   <span class='footerLogo'>MadeBy:<br>BLACK_ELF | ALINA_IVCHENKO</span>" +
+                "   <span class='footerCopyright'>© "+ LocalDate.now().getYear()+" Copyright</span>" +
+                "   <span class='footerMadeBy'>MadeBy:<br><a href='https://github.com/blackelf7'>BLACK_ELF</a> | <a href='https://github.com/alina-ivchenko'>ALINA_IVCHENKO</a></span>" +
                 "</footer>\n";
     }
 

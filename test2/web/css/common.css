@@ -11,21 +11,40 @@ header h2 {
     text-decoration: underline;
 }
 
-footer{
+footer {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 70px;
+    height: 55px;
     background-color: #45455e;
     color: white;
+    padding: 15px 0 0 0;
 }
 
-.footerLogo{
+.footerLogo {
     display: block;
     font-family: Arial;
     font-weight: 900;
     font-size: 18px;
-    margin: 15px 0 0 80px;
+    margin: 0 0 0 80px;
+    width: 100px;
+    float: left;
+}
+
+.footerMadeBy {
+    display: block;
+    margin: auto;
+    width: 400px;
+    text-align: center;
+    font-family: Arial;
+}
+
+.footerCopyright {
+    display: block;
+    font-family: Arial;
+    width: 100px;
+    float: right;
 }
 
 .leftPanel {
@@ -81,7 +100,7 @@ header h2 {
 
 .mainContainer {
     width: 80%;
-    margin: 10px 10%;
+    margin: 10px 10% 100px 10%;
     padding: 10px;
     background-color: aliceblue;
     box-shadow: 10px 10px 10px gray;

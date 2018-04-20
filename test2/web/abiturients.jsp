@@ -46,6 +46,8 @@
     </div>
     <div style="clear: both"></div>
 </div>
-
+<%
+    out.print(Drawer.drawFooter());
+%>
 </body>
 </html>

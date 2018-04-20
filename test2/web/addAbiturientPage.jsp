@@ -49,5 +49,8 @@
     </select>
     <button type="submit">Добавить</button>
 </form>
+<%
+    out.print(Drawer.drawFooter());
+%>
 </body>
 </html>
