@@ -13,13 +13,13 @@
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Предметы"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Предметы", currUser));
 %>
 <div class="mainContainer">
     <div class="menu">
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
         <a href="/add?objectType=Subject" class="menuButton">Добавить предмет</a>

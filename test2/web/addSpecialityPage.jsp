@@ -1,9 +1,7 @@
 <%@ page import="main.java.DAO.DAOFaculty" %>
 <%@ page import="main.java.DAO.DAOSubject" %>
-<%@ page import="main.java.Drawer" %>
-<%@ page import="main.java.Faculty" %>
-<%@ page import="main.java.Subject" %>
 <%@ page import="java.util.List" %>
+<%@ page import="main.java.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +12,9 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Добавить специальность"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Добавить специальность", currUser));
 %>
 <form action="/saver" method="post">
     <!-- вспомогательные -->

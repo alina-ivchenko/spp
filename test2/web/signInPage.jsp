@@ -1,4 +1,6 @@
 <%@ page import="main.java.Drawer" %>
+<%@ page import="main.java.User" %>
+<%@ page import="main.java.Authorisation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,7 +22,9 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Регистрация"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Регистрация", currUser));
 %>
 
 <form method="post"

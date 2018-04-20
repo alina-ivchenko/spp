@@ -99,10 +99,6 @@ body {
     background-attachment: fixed;
 }
 
-header h2 {
-    text-align: left;
-}
-
 .mainContainer {
     width: 80%;
     margin: 10px 10% 100px 10%;

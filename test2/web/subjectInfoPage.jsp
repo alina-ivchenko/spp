@@ -15,15 +15,15 @@
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Предмет"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Предмет", currUser));
     Subject subject = (Subject) request.getAttribute("currSubjectInfo");
 %>
 
 <div class="mainContainer">
     <div class="menu">
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
         <a class="menuButton" id="editBtn" onclick="onEditBtnClick()">Редактировать</a>

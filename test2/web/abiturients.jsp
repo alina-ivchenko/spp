@@ -14,14 +14,14 @@
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Абитуриенты"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Абитуриенты", currUser));
 %>
 <div class="mainContainer">
     <div class="menu">
 
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
         <a href="/add?objectType=Abiturient" class='menuButton'>Добавить абитуриента</a>
