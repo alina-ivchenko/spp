@@ -1,35 +1,60 @@
 header {
     padding: 15px 10px;
     background: navy;
-    height: 40px;
+    height: 60px;
 }
 
 header h2 {
+    margin: 15px 0;
     text-align: center;
-    margin: 0;
     color: aliceblue;
+    text-decoration: underline;
 }
 
-header .rightPanel {
-    width: 200px;
+.leftPanel {
+    width: 30%;
+    float: left;
+}
+
+.rightPanel {
+    width: 10%;
     max-height: 40px;
-    position: absolute;
-    top: 12px;
+    float: right;
     right: 0;
 }
 
 .rightPanel a, .rightPanel img {
     display: inline-block;
-    width: 48%;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    float: right;
+}
+
+.logoImg {
+    height: 100%;
+    float: left;
+}
+
+nav {
+    margin: 15px 0px;
+    width: 59%;
+    float: inline-start;
+}
+
+nav a {
+    display: inline-block;
+    border-left: white solid 2px;
+    border-right: white solid 2px;
+    font-size: 16px;
+    color: white !important;
 }
 
 body {
-    /*margin: 0px;
-    background-color: #F2906B;*/
+    margin: 0px;
+    /*background-color: #F2906B;*/
 
     background: Thistle;
-    backgroung-size: cover;
+    background-size: cover;
     background-attachment: fixed;
 }
 

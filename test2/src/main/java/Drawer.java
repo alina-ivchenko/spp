@@ -33,10 +33,19 @@ public class Drawer {
 
     public static String drawHeader(String title) {
         return "<header>\n" +
-                "    <h2>" + title + "</h2>\n" +
+                "    <div class = 'leftPanel'>" +
+                "       <img class='logoImg' src = 'img/BGUIR-logo.png'>" +
+                "       <h2>" + title + "</h2>\n" +
+                "    </div>\n"+
+                "    <nav>" +
+                "       <a href=\"/sign_in\">Регистрация</a>" +
+                "       <a href=\"/abiturients\">Абитуриенты</a>" +
+                "       <a href=\"/specialities\">Специальности</a>" +
+                "       <a href=\"/faculties\">Факультеты</a>" +
+                "       <a href=\"/subjects\">Предметы</a>" +
+                "    </nav>\n"+
                 "    <div class='rightPanel'>" +
-                "        <a class=\"gotoMainPage\" href=\"/\">На главную</a>\n" +
-                "        <img src=\"img/exit.png\" style=\"height: 60px; width: 60px;\" alt=\"Выйти\" onclick=\"logout()\">\n" +
+                "        <img src=\"img/exit.png\" alt=\"Выйти\" onclick=\"logout()\">\n" +
                 "    </div>" +
                 "</header>";
     }

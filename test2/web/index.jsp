@@ -13,28 +13,5 @@
     out.print(Drawer.drawHeader("Главная"));
 %>
 
-<p>
-    <a href="/sign_in">Регистрация</a>
-</p>
-
-<p>
-    <a href="/login">Войти</a>
-</p>
-
-<p>
-    <a href="/abiturients">Список абитуриентов</a>
-</p>
-
-<p>
-    <a href="/specialities">Список специальностей</a>
-</p>
-
-<p>
-    <a href="/faculties">Список Факультетов</a>
-</p>
-
-<p>
-    <a href="/subjects">Список предметов</a>
-</p>
 </body>
 </html>
