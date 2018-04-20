@@ -16,6 +16,8 @@
     <input type='text' name='password'/>
     <input type='submit' value='login'/>
 </form>
-
+<%
+    out.print(Drawer.drawFooter());
+%>
 </body>
 </html>

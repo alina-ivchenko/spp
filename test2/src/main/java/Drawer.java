@@ -1,5 +1,6 @@
 package main.java;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Drawer {
@@ -33,12 +34,29 @@ public class Drawer {
 
     public static String drawHeader(String title) {
         return "<header>\n" +
-                "    <h2>" + title + "</h2>\n" +
+                "    <div class = 'leftPanel'>" +
+                "       <img class='logoImg' src = 'img/BGUIR-logo.png'>" +
+                "       <h2>" + title + "</h2>\n" +
+                "    </div>\n"+
+                "    <nav>" +
+                "       <a href=\"/sign_in\">Регистрация</a>" +
+                "       <a href=\"/abiturients\">Абитуриенты</a>" +
+                "       <a href=\"/specialities\">Специальности</a>" +
+                "       <a href=\"/faculties\">Факультеты</a>" +
+                "       <a href=\"/subjects\">Предметы</a>" +
+                "    </nav>\n"+
                 "    <div class='rightPanel'>" +
-                "        <a class=\"gotoMainPage\" href=\"/\">На главную</a>\n" +
-                "        <img src=\"img/exit.png\" style=\"height: 60px; width: 60px;\" alt=\"Выйти\" onclick=\"logout()\">\n" +
+                "        <img src=\"img/exit.png\" alt=\"Выйти\" onclick=\"logout()\">\n" +
                 "    </div>" +
                 "</header>";
+    }
+
+    public static String drawFooter(){
+        return "<footer>\n" +
+                "   <h2 class='footerLogo'>Abiturient<br>APP</h2>" +
+                "   <span class='footerCopyright'>© "+ LocalDate.now().getYear()+" Copyright</span>" +
+                "   <span class='footerMadeBy'>MadeBy:<br><a href='https://github.com/blackelf7'>BLACK_ELF</a> | <a href='https://github.com/alina-ivchenko'>ALINA_IVCHENKO</a></span>" +
+                "</footer>\n";
     }
 
     public static String drawShortListOfSubjects(List<Subject> subjects) {
