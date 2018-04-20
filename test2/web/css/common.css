@@ -11,6 +11,11 @@ header h2 {
     text-decoration: underline;
 }
 
+.leftPanel a{
+    all: unset;
+    display: block;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -115,8 +120,6 @@ header h2 {
     display: inline-block;
     margin: 5%;
     width: 90%;
-    height: 40px;
-    background: #8bffc5;
 }
 
 .content {
@@ -130,9 +133,11 @@ header h2 {
 }
 
 a {
+    text-align: center;
     text-decoration: none;
     border-radius: 15%;
     padding: 10px;
+    transition: all 0.6s 0.01s ease;
     -moz-transition: all 0.6s 0.01s ease;
     -o-transition: all 0.6s 0.01s ease;
     -webkit-transition: all 0.6s 0.01s ease;
@@ -140,7 +145,6 @@ a {
 
 a:link {
     color: Indigo;
-    padding: 2px;
 }
 
 a:visited {

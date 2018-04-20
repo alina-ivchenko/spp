@@ -37,7 +37,7 @@ public class AuthorisationFilter implements Filter {
 
         //пропускаем проверку авторизации для перечисленных страниц
         String url = ((HttpServletRequest) servletRequest).getRequestURI();
-        if (url.equals("/login") || url.equals("/") || url.startsWith("/css") || url.startsWith("/js") || url.startsWith("/img")) {
+        if (url.equals("/sign_in") || url.equals("/login") || url.equals("/") || url.startsWith("/css") || url.startsWith("/js") || url.startsWith("/img")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

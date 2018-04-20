@@ -35,7 +35,7 @@ public class Drawer {
     public static String drawHeader(String title) {
         return "<header>\n" +
                 "    <div class = 'leftPanel'>" +
-                "       <img class='logoImg' src = 'img/BGUIR-logo.png'>" +
+                "       <a href='/'><img class='logoImg' src = 'img/BGUIR-logo.png'></a>" +
                 "       <h2>" + title + "</h2>\n" +
                 "    </div>\n"+
                 "    <nav>" +
