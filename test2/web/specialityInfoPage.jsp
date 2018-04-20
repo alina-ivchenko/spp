@@ -16,15 +16,15 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Специальность"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Специальность", currUser));
     Speciality speciality = (Speciality) request.getAttribute("currSpecialityInfo");
 %>
 
 <div class="mainContainer">
     <div class="menu">
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
         <a class="menuButton" id="editBtn"

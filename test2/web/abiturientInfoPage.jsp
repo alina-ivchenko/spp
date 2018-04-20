@@ -14,15 +14,16 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Студент"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Абитуриент", currUser));
     Abiturient abiturient = (Abiturient) request.getAttribute("currAbiturientInfo");
 %>
 
 <div class="mainContainer">
     <div class="menu">
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
+
             if (currUser.getRole() == 0) {
         %>
 

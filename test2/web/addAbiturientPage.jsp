@@ -2,6 +2,8 @@
 <%@ page import="main.java.Drawer" %>
 <%@ page import="main.java.Speciality" %>
 <%@ page import="java.util.List" %>
+<%@ page import="main.java.Authorisation" %>
+<%@ page import="main.java.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +15,9 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Абитуриентишко свежий"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Абитуриентишко свежий", currUser));
 %>
 
 <form action="/saver" method="post">

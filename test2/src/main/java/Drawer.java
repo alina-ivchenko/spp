@@ -40,13 +40,16 @@ public class Drawer {
                 "</form>";
     }
 
-    public static String drawHeader(String title) {
+    public static String drawHeader(String title, User currUser) {
+
+        String name = currUser != null ? "<br><span style='font-size:14px' text-decoration: none;>" + currUser.getLogin() + "</font>": "";
         return "<header>\n" +
                 "    <div class = 'leftPanel'>" +
                 "       <a href='/'><img class='logoImg' src = 'img/BGUIR-logo.png'></a>" +
-                "       <h2>" + title + "</h2>\n" +
+                "       <h2>" + title + name + "</h2>\n" +
                 "    </div>\n" +
                 "    <nav>" +
+                "       <a href=\"/login\">Вход</a>" +
                 "       <a href=\"/sign_in\">Регистрация</a>" +
                 "       <a href=\"/abiturients\">Абитуриенты</a>" +
                 "       <a href=\"/specialities\">Специальности</a>" +
@@ -55,6 +58,7 @@ public class Drawer {
                 "    </nav>\n" +
                 "    <div class='rightPanel'>" +
                 "        <img src=\"img/exit.png\" alt=\"Выйти\" onclick=\"logout()\">\n" +
+
                 "    </div>" +
                 "</header>";
     }

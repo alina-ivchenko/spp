@@ -14,7 +14,9 @@
 <body>
 
 <%
-    out.print(Drawer.drawHeader("Факультет"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Факультет", currUser));
     Faculty faculty = (Faculty) request.getAttribute("currFacultyInfo");
 %>
 
@@ -22,8 +24,6 @@
     <div class="menu">
 
         <%
-            Authorisation authorisation = new Authorisation();
-            User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
 

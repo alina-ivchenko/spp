@@ -1,4 +1,6 @@
 <%@ page import="main.java.Drawer" %>
+<%@ page import="main.java.User" %>
+<%@ page import="main.java.Authorisation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,9 +10,10 @@
 </head>
 <body>
 <%
-    out.print(Drawer.drawHeader("Абитуриентишко свежий"));
+    Authorisation authorisation = new Authorisation();
+    User currUser = authorisation.getAuthorisedUser(request);
+    out.print(Drawer.drawHeader("Добавить факультет", currUser));
 %>
-
 
 <form action="/saver" method="post">
     <!-- вспомогательные -->
