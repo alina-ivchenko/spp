@@ -6,10 +6,10 @@
 <html>
 <head>
     <title>Студент</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/dataEditor.js"></script>
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 
@@ -26,12 +26,12 @@
             if (currUser.getRole() == 0) {
         %>
 
-        <button id="editBtn" onclick="onEditBtnClick(['ListOfSpecialities','ListOfFaculties'])">Редактировать</button>
-        <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Abiturient')" style="display: none">Сохранить
-        </button>
+        <a class="menuButton" id="editBtn" onclick="onEditBtnClick(['ListOfSpecialities','ListOfFaculties'])">Редактировать</a>
+        <a class="menuButton" id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Abiturient')" style="display: none">Сохранить
+        </a>
 
-        <button onclick="onDeleteButtonClick('Abiturient',<%out.print(abiturient.getIdAbiturient());%>)"> Удалить
-        </button>
+        <a class="menuButton" onclick="onDeleteButtonClick('Abiturient',<%out.print(abiturient.getIdAbiturient());%>)"> Удалить
+        </a>
         <%
             }
         %>

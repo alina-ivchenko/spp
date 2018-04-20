@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Абитуриентишко</title>
-    <link rel="stylesheet" href="css/common.css">
+    <%out.print(Drawer.drawCommonHeadLinks());%>
     <link rel="stylesheet" href="css/addPage.css">
 </head>
 

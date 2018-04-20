@@ -3,9 +3,7 @@
 <html>
 <head>
     <title>Регистрация</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/registrationPageStyles.css">
-    <script src="js/main.js"></script>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script>
@@ -16,7 +14,7 @@
                 $("#mainSendForm").submit();
         }
     </script>
-
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 
 </head>
 <body>

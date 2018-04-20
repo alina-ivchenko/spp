@@ -6,11 +6,12 @@
 <html>
 <head>
     <title>Специальность</title>
-    <link rel="stylesheet" href="css/common.css">
+
     <link rel="stylesheet" href="css/tableDrawing.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/dataEditor.js"></script>
-    <script src="js/main.js"></script>
+
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 
@@ -26,13 +27,15 @@
             User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
-        <button id="editBtn" onclick="onEditBtnClick(['ListOfSubjects','ListOfFaculties'])">Редактировать</button>
-        <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Speciality')" style="display: none">Сохранить
-        </button>
+        <a class="menuButton" id="editBtn"
+           onclick="onEditBtnClick(['ListOfSubjects','ListOfFaculties'])">Редактировать</a>
+        <a class="menuButton" id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Speciality')"
+           style="display: none">Сохранить
+        </a>
 
-        <button onclick="onDeleteButtonClick('Speciality',<%out.print(speciality.getIdSpeciality());%>)">
+        <a class="menuButton" onclick="onDeleteButtonClick('Speciality',<%out.print(speciality.getIdSpeciality());%>)">
             Удалить
-        </button>
+        </a>
         <%}%>
     </div>
     <div class="content">

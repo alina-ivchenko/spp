@@ -11,7 +11,7 @@ header h2 {
     text-decoration: underline;
 }
 
-.leftPanel a{
+.leftPanel a {
     all: unset;
     display: block;
 }
@@ -116,12 +116,6 @@ header h2 {
     float: left;
 }
 
-.menu .menuButton, .menu button {
-    display: inline-block;
-    margin: 5%;
-    width: 90%;
-}
-
 .content {
     width: 80%;
     float: right;
@@ -132,7 +126,14 @@ header h2 {
     display: none;
 }
 
-a {
+.menu a{
+    border-bottom: #45455e solid 4px;
+    display: inline-block;
+    margin: 5%;
+    width: 90%;
+}
+
+a{
     text-align: center;
     text-decoration: none;
     border-radius: 15%;
@@ -151,7 +152,7 @@ a:visited {
     color: MediumSlateBlue;
 }
 
-a:hover {
+a:hover{
     background: BlueViolet;
     color: PaleGreen;
 }

@@ -7,10 +7,9 @@
 <html>
 <head>
     <title>Специальности</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
 
-    <script src="js/main.js"></script>
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 <%

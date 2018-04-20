@@ -1,16 +1,17 @@
+<%@ page import="main.java.Authorisation" %>
 <%@ page import="main.java.Drawer" %>
 <%@ page import="main.java.Subject" %>
-<%@ page import="main.java.Authorisation" %>
 <%@ page import="main.java.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Предмет</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/dataEditor.js"></script>
-    <script src="js/main.js"></script>
+
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 <%
@@ -25,13 +26,13 @@
             User currUser = authorisation.getAuthorisedUser(request);
             if (currUser.getRole() == 0) {
         %>
-        <button id="editBtn" onclick="onEditBtnClick()">Редактировать</button>
-        <button id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Subject')" style="display: none">Сохранить
-        </button>
+        <a class="menuButton" id="editBtn" onclick="onEditBtnClick()">Редактировать</a>
+        <a class="menuButton" id="saveBtn" onclick="onSaveChangesBtnClick('update', 'Subject')" style="display: none">Сохранить
+        </a>
 
-        <button onclick="onDeleteButtonClick('Subject',<%out.print(subject.getIdSubject());%>)">
+        <a class="menuButton" onclick="onDeleteButtonClick('Subject',<%out.print(subject.getIdSubject());%>)">
             Удалить
-        </button>
+        </a>
         <%}%>
     </div>
     <div class="content">

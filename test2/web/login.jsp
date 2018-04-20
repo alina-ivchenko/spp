@@ -2,10 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="css/common.css">
+    <title>Login</title>
     <link rel="stylesheet" href="css/registrationPageStyles.css">
-    <script src="js/main.js"></script>
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 
