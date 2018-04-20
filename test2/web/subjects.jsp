@@ -7,11 +7,9 @@
 <html>
 <head>
     <title>Предметы</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/tableDrawing.css">
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 
-    <script src="js/main.js"></script>
 </head>
 <body>
 <%

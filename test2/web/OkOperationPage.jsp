@@ -1,14 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Yarad
-  Date: 06.04.2018
-  Time: 5:17
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="main.java.Drawer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>OK</title>
+    <%out.print(Drawer.drawCommonHeadLinks());%>
 </head>
 <body>
 <p>Операция завершена успешно.</p>
