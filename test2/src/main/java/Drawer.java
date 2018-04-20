@@ -23,6 +23,9 @@ public class Drawer {
         return "";
     }
 */
+    /*
+    * отрисовывает то, что есть на каждой страницы в <head>...</head>
+    * */
     public static String drawCommonHeadLinks() {
         return
                 "<meta charset='utf-8'/>" +
@@ -31,6 +34,9 @@ public class Drawer {
                         "<link rel='stylesheet' href='css/common.css'>";
     }
 
+    /*
+    * При нажатии на "редактировать", именно в эту форму подгружаются input-ы
+    * */
     public static String drawMainSaveForm() {
         return "<form style=\"display: none\"\n" +
                 "      method=\"post\"\n" +
@@ -40,6 +46,7 @@ public class Drawer {
                 "</form>";
     }
 
+    //отрисовывает <header></>
     public static String drawHeader(String title, User currUser) {
 
         String name = currUser != null ? "<br><span style='font-size:14px' text-decoration: none;>" + currUser.getLogin() + "</font>": "";
@@ -63,6 +70,7 @@ public class Drawer {
                 "</header>";
     }
 
+    //отрисовывает <footer></>
     public static String drawFooter() {
         return "<footer>\n" +
                 "   <h2 class='footerLogo'>Abiturient<br>APP</h2>" +
@@ -71,6 +79,7 @@ public class Drawer {
                 "</footer>\n";
     }
 
+    //отрисовыает таблицу со всеми предметами
     public static String drawShortListOfSubjects(List<Subject> subjects) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable tableWithClickableTrs'>");
@@ -85,6 +94,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывает информацию об одном предмете
     public static String drawCurrSubject(Subject subject) {
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
 
@@ -95,6 +105,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывает ьаблицу факультетов
     public static String drawShortListOfFaculties(List<Faculty> faculties) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable tableWithClickableTrs'>");
@@ -108,6 +119,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывает информацию о текущем факультете
     public static String drawCurrFaculty(Faculty faculty) {
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
 
@@ -118,6 +130,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывет таблицу-список всех абитуриентов
     public static String drawShortListOfAbiturients(List<Abiturient> abiturients) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable tableWithClickableTrs'>");
@@ -135,6 +148,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывает информацию о текущем абитуриенте
     public static String drawCurrAbiturient(Abiturient abiturient) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");
@@ -153,6 +167,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //таблица-список специальностей
     public static String drawShortListOfSpecialities(List<Speciality> specialities) {
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable tableWithClickableTrs'>");
         stringBuilder.append("<tr><th>Название</th><th>Факультет</th></tr>");
@@ -167,6 +182,7 @@ public class Drawer {
         return stringBuilder.toString();
     }
 
+    //отрисовывает информацию в виде таблицы о текущей специальности
     public static String drawCurrSpeciality(Speciality speciality) {
 
         StringBuilder stringBuilder = new StringBuilder("<table class='infoTable'>");

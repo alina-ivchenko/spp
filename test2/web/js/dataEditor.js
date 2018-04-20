@@ -1,7 +1,8 @@
 function onDeleteButtonClick(objectType, id) {
-    //пока что не асинхронно
+    //справшивает уверены ли. если да -> продолжить удаление
     var res = confirm("Уверны?");
     if (res) {
+        //вызвать форму, добавив туда соотв. поля
         $('#mainSendForm').append("<input name='task' value='delete'>")
             .append("<input name='objectType' value='" + objectType + "'>")
             .append("<input name='id' value='" + id + "'>")
@@ -9,10 +10,11 @@ function onDeleteButtonClick(objectType, id) {
     }
 }
 
+//при нажатии на кнопку "редактировать"
 function onEditBtnClick(tasks) {
-    //taskStr определяет, нужно ли что-то подгружать дополнительно
+    //tasks определяет, нужно ли что-то подгружать дополнительно
     //перед началом изменения. например, чтобы получить список всех
-    //специальностей, нужно передать в taskStr 'ListOfSpecialities'
+    //специальностей, нужно передать в tasks ['ListOfSpecialities']
     //если ничего не нужно, ничего и не передаём
 
     if (typeof tasks === 'undefined' || tasks.length === 0)
@@ -31,6 +33,9 @@ function onEditBtnClick(tasks) {
 function onRequiredInfoLoaded(data) {
     if (typeof data !== 'undefined' && data !== null && data !== 'Error')
         var serverAnswer = JSON.parse(data);
+
+    //замена всех нужных полей на input-ы
+    //что чем заменять, определяется с помощью классов
 
     $('.send').each(function (index, value) {
 
@@ -71,8 +76,10 @@ function onRequiredInfoLoaded(data) {
     $("#saveBtn").show();
 }
 
+
 function onSaveChangesBtnClick(task, objectType) {
     if (task !== null && objectType !== null)
+        //оправить запрос
         sendSaveRequest(task, objectType);
     else
         alert("onSaveChangesBtnClick error: неверные параметры");
