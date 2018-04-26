@@ -12,7 +12,7 @@
 <%
     Authorisation authorisation = new Authorisation();
     User currUser = authorisation.getAuthorisedUser(request);
-    out.print(Drawer.drawHeader("Факультеты", currUser));
+    out.print(Drawer.drawHeader("Главная", currUser));
 %>
 
 <%

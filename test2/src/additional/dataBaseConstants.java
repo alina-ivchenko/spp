@@ -17,8 +17,8 @@ public class dataBaseConstants {
     */
 
     private static final String dataBaseLogin = "root";
-    private static final String dataBasePassword = "root";
-    private static final String dataBaseUrl = "jdbc:mysql://localhost:3306/mydb";
+    private static final String dataBasePassword = "";
+    private static final String dataBaseUrl = "jdbc:mysql://localhost:3359/mydb";
 
     public static String getDataBasePassword() {
         return dataBasePassword;
