@@ -1,7 +1,17 @@
 header {
-    padding: 15px 10px;
+    padding: 0 10px;
     background: navy;
-    height: 60px;
+
+    height: 80px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > * {
+    display: block;
 }
 
 header h2 {
@@ -14,6 +24,7 @@ header h2 {
 .leftPanel a {
     all: unset;
     display: block;
+    float: left;
 }
 
 footer {
@@ -54,30 +65,28 @@ footer {
 
 .leftPanel {
     width: 280px;
-    float: left;
+    flex-shrink: 0;
 }
 
 .rightPanel {
     width: 60px;
     height: 60px;
-    float: right;
     right: 0;
 }
 
 .rightPanel a, .rightPanel img {
     display: inline-block;
-    width: 100%;
-    float: right;
+    width: 60px;
 }
 
 .logoImg {
-    height: 100%;
-    float: left;
+    width: 60px;
 }
 
 nav {
-    margin: 15px auto;
+    margin: 0px auto;
     text-align: center;
+    z-index: 100;
 }
 
 nav a {
@@ -149,4 +158,31 @@ a:visited {
 a:hover {
     background: BlueViolet;
     color: PaleGreen;
+}
+
+.openMenuButton {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    nav a {
+        display: none;
+
+        text-align: center;
+        width: 80%;
+        height: 60px;
+        font-size: 22px;
+        background: navy;
+        border-radius: 0px;
+        font-weight: bold;
+        border-bottom: white solid 2px;
+    }
+
+    nav {
+        align-self: flex-start;
+    }
+    
+    .openMenuButton {
+        display: inline-block;
+    }
 }

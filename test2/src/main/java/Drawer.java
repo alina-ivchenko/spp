@@ -30,7 +30,11 @@ public class Drawer {
         return
                 "<meta charset='utf-8'/>" +
                         "<link rel='shortcut icon' href='img/favicon.ico'>" +
+                        "<script src='js/jquery-3.3.1.min.js'></script>" +
                         "<script src='js/main.js'></script>" +
+                        "<script>" +
+                        "$(window).on('load resize',onResizeHandler);" +
+                        "</script>" +
                         "<link rel='stylesheet' href='css/common.css'>";
     }
 
@@ -55,18 +59,20 @@ public class Drawer {
                 "       <a href='/'><img class='logoImg' src = 'img/BGUIR-logo.png'></a>" +
                 "       <h2>" + title + name + "</h2>\n" +
                 "    </div>\n" +
+                "    <nav onclick='openMenuButtonClick()'>" +
+                "    <a class='openMenuButton' href='#'>Меню</a>" +
+
+                "    <a class='navMenuButton' href=\"/login\">Вход</a>" +
+                "    <a class='navMenuButton' href=\"/sign_in\">Регистрация</a>" +
+                "    <a class='navMenuButton' href=\"/abiturients\">Абитуриенты</a>" +
+                "    <a class='navMenuButton' href=\"/specialities\">Специальности</a>" +
+                "    <a class='navMenuButton' href=\"/faculties\">Факультеты</a>" +
+                "    <a class='navMenuButton' href=\"/subjects\">Предметы</a>" +
+                "    </nav>\n" +
                 "    <div class='rightPanel'>" +
                 "        <img src=\"img/exit.png\" alt=\"Выйти\" onclick=\"logout()\">\n" +
 
                 "    </div>" +
-                "    <nav>" +
-                "       <a href=\"/login\">Вход</a>" +
-                "       <a href=\"/sign_in\">Регистрация</a>" +
-                "       <a href=\"/abiturients\">Абитуриенты</a>" +
-                "       <a href=\"/specialities\">Специальности</a>" +
-                "       <a href=\"/faculties\">Факультеты</a>" +
-                "       <a href=\"/subjects\">Предметы</a>" +
-                "    </nav>\n" +
                 "</header>";
     }
 

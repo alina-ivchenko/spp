@@ -17,3 +17,11 @@ function showInfoAboutSubject(subjectId) {
 function logout() {
     window.location = "http://" + document.location.host + "/login?logout=true"
 }
+
+function openMenuButtonClick() {
+    if ($(".navMenuButton").css('display') ==='none') {
+        $(".navMenuButton").css('display', 'inline-block');
+    } else {
+        $(".navMenuButton").hide(200);
+    }
+}
