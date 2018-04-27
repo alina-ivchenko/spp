@@ -79,9 +79,9 @@ public class Drawer {
     //отрисовывает <footer></>
     public static String drawFooter() {
         return "<footer>\n" +
-                "   <h2 class='footerLogo'>Abiturient<br>APP</h2>" +
+                "   <span class='footerLogo'>Abiturient<br>APP</span>" +
+                "   <span class='footerMadeBy'><span>MadeBy:<br></span><a href='https://github.com/blackelf7'>BLACK_ELF</a><a href='https://github.com/alina-ivchenko'>ALINA_IVCHENKO</a></span>" +
                 "   <span class='footerCopyright'>© " + LocalDate.now().getYear() + " Copyright</span>" +
-                "   <span class='footerMadeBy'>MadeBy:<br><a href='https://github.com/blackelf7'>BLACK_ELF</a> | <a href='https://github.com/alina-ivchenko'>ALINA_IVCHENKO</a></span>" +
                 "</footer>\n";
     }
 
