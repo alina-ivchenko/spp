@@ -19,7 +19,7 @@ function logout() {
 }
 
 function openMenuButtonClick() {
-    if ($(".navMenuButton").css('display') ==='none') {
+    if ($(".navMenuButton").css('display') === 'none') {
         $(".navMenuButton").css('display', 'inline-block');
     } else {
         $(".navMenuButton").hide(200);
