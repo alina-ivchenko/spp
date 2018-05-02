@@ -49,6 +49,16 @@
         <servlet-class>main.java.Servlets.getInfoServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>generateReportServlet</servlet-name>
+        <servlet-class>main.java.Servlets.generateReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>generateReportServlet</servlet-name>
+        <url-pattern>/generateReport</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>getInfoServlet</servlet-name>
         <url-pattern>/getInfo</url-pattern>

@@ -1,16 +1,17 @@
 package main.java;
 
 import main.java.DAO.DAOAbiturient;
-import main.java.DAO.DAOSpeciality;
-import main.java.DAO.DAOUser;
-import main.java.DAO.SQLConnector;
-
-import java.util.List;
+import main.java.View.CSVView;
 
 public class temp {
     public static void main(String[] args) {
-        DAOSpeciality daoSpeciality = new DAOSpeciality();
-        List<Speciality> specialities = daoSpeciality.getAllSpecialities();
-        List<Speciality> specialities2 = daoSpeciality.getAllSpecialities();
+        DAOAbiturient daoAbiturient = new DAOAbiturient();
+        CSVView csvView = new CSVView();
+        try {
+            //String str = csvView.generateReportByAbiturients(daoAbiturient.getAbiturients());
+            //String str2 = csvView.generateReportByAbiturients(daoAbiturient.getAbiturients());
+        } catch (Exception e) {
+
+        }
     }
 }
