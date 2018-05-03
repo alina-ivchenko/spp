@@ -10,8 +10,8 @@ public class temp {
         DAOAbiturient daoAbiturient = new DAOAbiturient();
         PDFView view = new PDFView();
         try {
-            String str = view.generateFileReportByAbiturients(daoAbiturient.getAbiturients());
-            String str2 = view.generateFileReportByAbiturients(daoAbiturient.getAbiturients());
+            //byte[] str = view.generateFileReportByAbiturients(daoAbiturient.getAbiturients());
+            //byte[] str2 = view.generateFileReportByAbiturients(daoAbiturient.getAbiturients());
            // String str2 = csvView.generateReportByAbiturients(daoAbiturient.getAbiturients());
         } catch (Exception e) {
 

@@ -7,9 +7,9 @@ import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 import main.java.Abiturient;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,7 +23,10 @@ public class PDFView implements IReportView {
         } catch (Exception e) {
 
         }
+
     }
+
+    private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
     public static final Font standardFont = new Font(bf, 14, 0, BaseColor.BLACK);
     public static final Font standardBoldFont = new Font(bf, 14, Font.BOLD, new BaseColor(115, 205, 105));
@@ -90,14 +93,12 @@ public class PDFView implements IReportView {
         return p;
     }
 
-    private Document getTypicalDocument(File file, String title) throws Exception {
+    private Document getTypicalDocument(String title) throws Exception {
         Rectangle pageSize = new Rectangle(PageSize.A4);
         pageSize.setBackgroundColor(new BaseColor(255, 238, 238));
         Document document = new Document(pageSize);
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
-        //TableHeader event = new TableHeader();
-        //writer.setPageEvent((PdfPageEvent) event);
-        //TODO: разобраться с несовместимостью
+        byteArrayOutputStream.flush();
+        PdfWriter.getInstance(document, byteArrayOutputStream);
 
         document.open();
         addMetaData(document, title);
@@ -201,7 +202,7 @@ public class PDFView implements IReportView {
     }
 
     private void addAbiturientData(Document document, Abiturient abiturient, float leftIndent) throws DocumentException {
-        document.add(createBoldColoredParagraph("Абитуриентишко №" + abiturient.getIdSpeciality(), 0,BaseColor.BLACK));
+        document.add(createBoldColoredParagraph("Абитуриентишко №" + abiturient.getIdSpeciality(), 0, BaseColor.BLACK));
         document.add(createStandardParagraph("Фамилия:      ", abiturient.getFirstName(), leftIndent));
         document.add(createStandardParagraph("Имя:          ", abiturient.getLastName(), leftIndent));
         document.add(createStandardParagraph("Отчество:     ", abiturient.getSecondName(), leftIndent));
@@ -228,26 +229,24 @@ public class PDFView implements IReportView {
         }
     }
 
-    public String generateFileReportByAbiturients(List<Abiturient> abiturients) throws Exception {
-        File tempFile = File.createTempFile("report", ".pdf");
-        Document document = getTypicalDocument(tempFile, "Отчёт по всем абитуриентам");
-
-        document.add(createHeader1Paragraph("Абитуриенты"));
-        for (Abiturient abiturient : abiturients) {
-            addAbiturientData(document, abiturient, 0);
-            addEmptyLine(document, 1);
-        }
-        if (abiturients.isEmpty()) {
-            document.add(createBoldParagraph("Список абитуриентов пуст", 0));
-        }
-
-        document.close();
-        return tempFile.getAbsolutePath();
-    }
-
-
     @Override
-    public byte[] generateReportByAbiturients(List<Abiturient> crimes) {
-        return new byte[0];
+    public byte[] generateReportByAbiturients(List<Abiturient> abiturients) {
+
+        try {
+            Document document = getTypicalDocument("Отчёт по всем абитуриентам");
+
+            document.add(createHeader1Paragraph("Абитуриенты"));
+            for (Abiturient abiturient : abiturients) {
+                addAbiturientData(document, abiturient, 0);
+                addEmptyLine(document, 1);
+            }
+            if (abiturients.isEmpty()) {
+                document.add(createBoldParagraph("Список абитуриентов пуст", 0));
+            }
+            document.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

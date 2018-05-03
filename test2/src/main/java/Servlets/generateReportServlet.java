@@ -22,7 +22,7 @@ public class generateReportServlet extends HttpServlet {
             reportTask = req.getParameter("reportTask");
             format = req.getParameter("format");
         } catch (Exception e) {
-            req.getRequestDispatcher("/errorOperationServlet.jsp").forward(req, resp);
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
             return;
         }
 
@@ -35,7 +35,7 @@ public class generateReportServlet extends HttpServlet {
             reportView = new XSLSView();
 
         if (reportView == null) {
-            req.getRequestDispatcher("/errorOperationServlet.jsp").forward(req, resp);
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
             return;
         }
 
@@ -45,10 +45,11 @@ public class generateReportServlet extends HttpServlet {
             DAOAbiturient daoAbiturient = new DAOAbiturient();
             file = reportView.generateReportByAbiturients(daoAbiturient.getAbiturients());
         }
+
         //TODO: другие отчёты
 
         if (file == null || file.length == 0)
-            req.getRequestDispatcher("/errorOperationServlet.jsp").forward(req, resp);
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
         else {
             resp.setHeader("Content-Disposition", "attachment;filename=report." + format);
             resp.setContentType("text/" + format + "; charset=UTF-8");
