@@ -29,6 +29,7 @@ public class PDFView implements IReportView {
 
     }
 
+    private String rootOfProject = "D:\\лабы\\xor\\xor\\test2\\src\\resources";
     private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
     public static final Font standardFont = new Font(bf, 14, 0, BaseColor.BLACK);
@@ -159,7 +160,7 @@ public class PDFView implements IReportView {
         addEmptyLine(document, 1);
 
         try {
-            Image logo = Image.getInstance("src/resources/rainbow.jpg");
+            Image logo = Image.getInstance(rootOfProject + "\\rainbow.jpg");
             logo.setAlignment(Image.ALIGN_CENTER);
             logo.setSpacingAfter(10);
             logo.setSpacingBefore(10);
@@ -177,7 +178,7 @@ public class PDFView implements IReportView {
         try {
             Paragraph paragraph = new Paragraph();
             Phrase phrase = new Phrase();
-            Image logo = Image.getInstance("src/resources/followus.png");
+            Image logo = Image.getInstance(rootOfProject + "\\followus.png");
             logo.setAlignment(Image.ALIGN_CENTER);
             logo.setSpacingAfter(10);
             logo.setSpacingBefore(10);
