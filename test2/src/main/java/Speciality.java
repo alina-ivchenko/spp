@@ -1,5 +1,6 @@
 package main.java;
 
+import main.java.DAO.DAOAbiturient;
 import main.java.DAO.DAOFaculty;
 import main.java.DAO.DAOSubject;
 
@@ -112,5 +113,10 @@ public class Speciality {
 
     public void setThirdSubject(long thirdSubject) {
         this.thirdSubject = thirdSubject;
+    }
+
+    public Integer getAmountOfAbiturients() {
+        DAOAbiturient daoAbiturient = new DAOAbiturient();
+        return daoAbiturient.getAmountOfAbiturientsOnSpeciality(this.getIdSpeciality());
     }
 }

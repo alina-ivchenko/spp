@@ -11,6 +11,19 @@ import java.util.List;
 
 public class DAOAbiturient extends DAO {
 
+    public Integer getAmountOfAbiturientsOnSpeciality(long specialityId) {
+        PreparedStatement preparedQuery = currConnection.prepareStatement("SELECT count(*) as count FROM `abiturient` WHERE `Id_Speciality` = ? GROUP BY `Id_Abiturient`");
+        try {
+            preparedQuery.setLong(1, specialityId);
+        } catch (SQLException e) {
+            return null;
+        }
+        List<HashMap<String, Object>> retArray = currConnection.queryFind(preparedQuery);
+        if (retArray.isEmpty()) return null;
+
+        return Integer.parseInt(retArray.get(0).get("count").toString());
+    }
+
     public Abiturient getAbiturientById(long abiturientId) {
         PreparedStatement preparedQuery = currConnection.prepareStatement("SELECT `Id_Abiturient`, `Last_Name`, `First_Name`, `Second_Name`, `Address`, `Passport`, `Birthdate`, `Id_Speciality` FROM `abiturient` WHERE `Id_Abiturient` = ?");
         try {

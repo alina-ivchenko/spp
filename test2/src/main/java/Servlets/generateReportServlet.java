@@ -1,6 +1,7 @@
 package main.java.Servlets;
 
 import main.java.DAO.DAOAbiturient;
+import main.java.DAO.DAOSpeciality;
 import main.java.View.CSVView;
 import main.java.View.IReportView;
 import main.java.View.PDFView;
@@ -44,6 +45,9 @@ public class generateReportServlet extends HttpServlet {
         if (reportTask.equals("abiturients")) {
             DAOAbiturient daoAbiturient = new DAOAbiturient();
             file = reportView.generateReportByAbiturients(daoAbiturient.getAbiturients());
+        } else if (reportTask.equals("specialities")) {
+            DAOSpeciality daoSpeciality = new DAOSpeciality();
+            file = reportView.generateReportBySpecialities(daoSpeciality.getAllSpecialities());
         }
 
         //TODO: другие отчёты
