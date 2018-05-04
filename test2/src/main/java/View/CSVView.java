@@ -3,6 +3,7 @@ package main.java.View;
 import main.java.Abiturient;
 import main.java.ProjectFunctions;
 import main.java.Speciality;
+import main.java.Subject;
 
 import java.nio.charset.Charset;
 import java.util.List;
@@ -31,6 +32,16 @@ public class CSVView implements IReportView {
         return writer.toString().getBytes(Charset.forName("UTF8"));
     }
 
+    @Override
+    public byte[] generateReportBySubjects(List<Subject> subjects) {
+        StringBuilder writer = new StringBuilder();
+        writer.append('\uFEFF');
+        writer.append(getSubjectHeader() + newLine);
+        for (int i = 0; i < subjects.size(); i++)
+            writer.append(getCsvStringOfSubjectObject(subjects.get(i)) + newLine);
+        return writer.toString().getBytes(Charset.forName("UTF8"));
+    }
+
     private String getCsvStringOfAbiturientObject(Abiturient abiturient) {
         return
                 ProjectFunctions.escapeNullException(abiturient.getFirstName(), defaultNullStr) + delimiter +
@@ -51,6 +62,16 @@ public class CSVView implements IReportView {
                         "Паспорт" + delimiter +
                         "Дата рождения" + delimiter +
                         "Специальность";
+    }
+
+    private String getSubjectHeader() {
+        return
+                "Название";
+    }
+
+    private String getCsvStringOfSubjectObject(Subject subject) {
+        return
+                ProjectFunctions.escapeNullException(subject.getName(), null);
     }
 
     private String getSpecialityHeader() {

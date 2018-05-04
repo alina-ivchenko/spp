@@ -12,7 +12,10 @@ import java.util.List;
 public class DAOAbiturient extends DAO {
 
     public Integer getAmountOfAbiturientsOnSpeciality(long specialityId) {
-        PreparedStatement preparedQuery = currConnection.prepareStatement("SELECT count(*) as count FROM `abiturient` WHERE `Id_Speciality` = ? GROUP BY `Id_Abiturient`");
+        PreparedStatement preparedQuery = currConnection.prepareStatement("select count(1)\n" +
+                "from abiturient a" +
+                "where a.Id_Speciality = 5" +
+                "group by a.Id_Speciality;");
         try {
             preparedQuery.setLong(1, specialityId);
         } catch (SQLException e) {

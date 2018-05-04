@@ -3,6 +3,7 @@ package main.java.View;
 import main.java.Abiturient;
 import main.java.ProjectFunctions;
 import main.java.Speciality;
+import main.java.Subject;
 import main.java.View.ExtraClasses.TableBorder;
 import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.ss.usermodel.*;
@@ -58,6 +59,25 @@ public class XLSXView implements IReportView {
             borders = addSpecialitiesToSheet(sheet, borders.getRow(), specialities, title, borders.getColumn());
             setParamsToFit(workbook, sheet, borders.getColumn());
 
+
+            byteArrayOutputStream.flush();
+            workbook.write(byteArrayOutputStream);
+        } catch (Exception e) {
+            return null;
+        }
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    @Override
+    public byte[] generateReportBySubjects(List<Subject> subjects) {
+        try {
+            XSSFWorkbook workbook = getWorkbook();
+            String title = "Отчёт по всем предметы";
+            XSSFSheet sheet = getSheet(workbook, title);
+
+            TableBorder borders = new TableBorder();
+            borders = addSubjectsToSheet(sheet, borders.getRow(), subjects, title, borders.getColumn());
+            setParamsToFit(workbook, sheet, borders.getColumn());
 
             byteArrayOutputStream.flush();
             workbook.write(byteArrayOutputStream);
@@ -181,6 +201,18 @@ public class XLSXView implements IReportView {
         return colNum;
     }
 
+    private int addSubjectsHeaders(XSSFRow row, int colNum) {
+        createCell(row, colNum++, "ID", styleHeader);
+        createCell(row, colNum++, "Название", styleHeader);
+        return colNum;
+    }
+
+    private int addSubjectContents(XSSFRow row, int colNum, Subject subject) {
+        createCell(row, colNum++, Long.toString(subject.getIdSubject()), styleUsual);
+        createCell(row, colNum++, subject.getName(), styleUsual);
+        return colNum;
+    }
+
     private int addSpecialityContents(XSSFRow row, int colNum, Speciality speciality) {
         createCell(row, colNum++, speciality.getName(), styleUsual);
         createCell(row, colNum++, speciality.getFaculty().getName(), styleUsual);
@@ -200,7 +232,6 @@ public class XLSXView implements IReportView {
         createCell(row, colNum++, "Специальность", styleHeader);
         return colNum;
     }
-
 
     private int addAbiturientContents(XSSFRow row, int colNum, Abiturient abiturient) {
         createCell(row, colNum++, abiturient.getFirstName(), styleUsual);
@@ -223,7 +254,6 @@ public class XLSXView implements IReportView {
         }
         sheet.addMergedRegion(new CellRangeAddress(headerRow, headerRow, 0, resultColumns - 1));
     }
-
 
     private TableBorder addAbiturientsToSheet(XSSFSheet sheet, int rowNum, List<Abiturient> abiturients, String title, int columnsCount) {
         int colNum = 0;
@@ -255,4 +285,18 @@ public class XLSXView implements IReportView {
         return new TableBorder(rowNum, columnsCount < resultColumns ? resultColumns : columnsCount);
     }
 
+    private TableBorder addSubjectsToSheet(XSSFSheet sheet, int rowNum, List<Subject> subjects, String title, int columnsCount) {
+        int colNum = 0;
+        int headerRow = rowNum++;
+
+        XSSFRow row = sheet.createRow(rowNum++);
+        int resultColumns = addSubjectsHeaders(row, colNum);
+        for (Subject subject : subjects) {
+            row = sheet.createRow(rowNum++);
+            colNum = 0;
+            addSubjectContents(row, colNum, subject);
+        }
+        createMergedCell(sheet, headerRow, resultColumns, title);
+        return new TableBorder(rowNum, columnsCount < resultColumns ? resultColumns : columnsCount);
+    }
 }

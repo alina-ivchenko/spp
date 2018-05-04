@@ -8,6 +8,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import main.java.Abiturient;
 import main.java.ProjectFunctions;
 import main.java.Speciality;
+import main.java.Subject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -223,6 +224,11 @@ public class PDFView implements IReportView {
         document.add(createStandardParagraph("Кол-во абитуриентов:      ", ProjectFunctions.escapeNullException(speciality.getAmountOfAbiturients(), null), leftIndent));
     }
 
+    private void addSubjectData(Document document, Subject subject, float leftIndent) throws DocumentException {
+        document.add(createBoldColoredParagraph("Предмет №" + subject.getIdSubject(), 0, BaseColor.BLACK));
+        document.add(createStandardParagraph("Название: ", subject.getName(), leftIndent));
+    }
+
     public String encryptPDF(String oldFile) throws Exception {
         try {
             File tempFile = File.createTempFile("report", ".pdf");
@@ -273,6 +279,26 @@ public class PDFView implements IReportView {
                 addEmptyLine(document, 1);
             }
             if (specialities.isEmpty()) {
+                document.add(createBoldParagraph("Список специальностей пуст", 0));
+            }
+            document.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public byte[] generateReportBySubjects(List<Subject> subjects) {
+        try {
+            Document document = getTypicalDocument("Отчёт по всем предметам");
+
+            document.add(createHeader1Paragraph("Предметы"));
+            for (Subject subject : subjects) {
+                addSubjectData(document, subject, 0);
+                addEmptyLine(document, 1);
+            }
+            if (subjects.isEmpty()) {
                 document.add(createBoldParagraph("Список специальностей пуст", 0));
             }
             document.close();
