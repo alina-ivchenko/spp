@@ -4,6 +4,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Drawer {
+    public static String drawReportsPannel(String reportTask) {
+        return "<div class='reportTaskPanel'>" +
+                "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=csv'>CSV</a>" +
+                "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=pdf'>PDF</a>" +
+                "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=xlsx'>XLSX</a>" +
+                "</div>";
+    }
+
     /*
     public static String drawAdminLeftBarFunctionality(String jspPageName) {
 

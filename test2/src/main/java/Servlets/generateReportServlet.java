@@ -2,6 +2,9 @@ package main.java.Servlets;
 
 import main.java.DAO.DAOAbiturient;
 import main.java.View.CSVView;
+import main.java.View.IReportView;
+import main.java.View.PDFView;
+import main.java.View.XLSXView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,17 +16,46 @@ import java.io.OutputStream;
 public class generateReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doGet(req, resp);
+        String reportTask = null;
+        String format = null;
+        try {
+            reportTask = req.getParameter("reportTask");
+            format = req.getParameter("format");
+        } catch (Exception e) {
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+            return;
+        }
 
-        resp.setHeader("Content-Disposition", "attachment;filename=fileNameShowed.csv");
-        resp.setContentType("text/csv; charset=UTF-8");
+        IReportView reportView = null;
+        if (format.equals("csv"))
+            reportView = new CSVView();
+        if (format.equals("pdf"))
+            reportView = new PDFView();
+        if (format.equals("xlsx"))
+            reportView = new XLSXView();
 
-        OutputStream writer = resp.getOutputStream();
+        if (reportView == null) {
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+            return;
+        }
 
-        DAOAbiturient daoAbiturient = new DAOAbiturient();
-        CSVView csvView = new CSVView();
+        byte[] file = null;
 
-        byte[] file = csvView.generateReportByAbiturients(daoAbiturient.getAbiturients());
-        writer.write(file, 0, file.length);
+        if (reportTask.equals("abiturients")) {
+            DAOAbiturient daoAbiturient = new DAOAbiturient();
+            file = reportView.generateReportByAbiturients(daoAbiturient.getAbiturients());
+        }
+
+        //TODO: другие отчёты
+
+        if (file == null || file.length == 0)
+            req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
+        else {
+            resp.setHeader("Content-Disposition", "attachment;filename=report." + format);
+            resp.setContentType("text/" + format + "; charset=UTF-8");
+            OutputStream writer = resp.getOutputStream();
+
+            writer.write(file, 0, file.length); //OK: file was sended
+        }
     }
 }
