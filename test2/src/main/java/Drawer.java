@@ -8,7 +8,7 @@ public class Drawer {
         return "<div class='reportTaskPanel'>" +
                 "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=csv'>CSV</a>" +
                 "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=pdf'>PDF</a>" +
-                "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=xsls'>XSLS</a>" +
+                "<a target='_blank' href='/generateReport?reportTask=" + reportTask + "&format=xlsx'>XLSX</a>" +
                 "</div>";
     }
 

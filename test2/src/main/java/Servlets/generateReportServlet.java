@@ -4,7 +4,7 @@ import main.java.DAO.DAOAbiturient;
 import main.java.View.CSVView;
 import main.java.View.IReportView;
 import main.java.View.PDFView;
-import main.java.View.XSLSView;
+import main.java.View.XLSXView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,8 +31,8 @@ public class generateReportServlet extends HttpServlet {
             reportView = new CSVView();
         if (format.equals("pdf"))
             reportView = new PDFView();
-        if (format.equals("xsls"))
-            reportView = new XSLSView();
+        if (format.equals("xlsx"))
+            reportView = new XLSXView();
 
         if (reportView == null) {
             req.getRequestDispatcher("/errorOperationPage.jsp").forward(req, resp);
