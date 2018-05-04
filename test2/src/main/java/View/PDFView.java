@@ -6,6 +6,9 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 import main.java.Abiturient;
+import main.java.ProjectFunctions;
+import main.java.Speciality;
+import main.java.Subject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -202,13 +205,28 @@ public class PDFView implements IReportView {
     }
 
     private void addAbiturientData(Document document, Abiturient abiturient, float leftIndent) throws DocumentException {
-        document.add(createBoldColoredParagraph("Абитуриентишко №" + abiturient.getIdSpeciality(), 0, BaseColor.BLACK));
+        document.add(createBoldColoredParagraph("Абитуриентишко №" + abiturient.getIdAbiturient(), 0, BaseColor.BLACK));
         document.add(createStandardParagraph("Фамилия:      ", abiturient.getFirstName(), leftIndent));
         document.add(createStandardParagraph("Имя:          ", abiturient.getLastName(), leftIndent));
         document.add(createStandardParagraph("Отчество:     ", abiturient.getSecondName(), leftIndent));
         document.add(createStandardParagraph("Адрес:        ", abiturient.getAddress(), leftIndent));
         document.add(createStandardParagraph("Паспорт:      ", abiturient.getPassport(), leftIndent));
         document.add(createStandardParagraph("Специальность:", abiturient.getSpeciality().getName(), leftIndent));
+    }
+
+    private void addSpecialityData(Document document, Speciality speciality, float leftIndent) throws DocumentException {
+        document.add(createBoldColoredParagraph("Специальность №" + speciality.getIdSpeciality(), 0, BaseColor.BLACK));
+        document.add(createStandardParagraph("Название:      ", speciality.getName(), leftIndent));
+        document.add(createStandardParagraph("Факультет:      ", speciality.getFaculty().getName(), leftIndent));
+        document.add(createStandardParagraph("Предмет 1:          ", speciality.getSubject1().getName(), leftIndent));
+        document.add(createStandardParagraph("Предмет 2:     ", speciality.getSubject2().getName(), leftIndent));
+        document.add(createStandardParagraph("Предмет 3:        ", speciality.getSubject3().getName(), leftIndent));
+        document.add(createStandardParagraph("Кол-во абитуриентов:      ", ProjectFunctions.escapeNullException(speciality.getAmountOfAbiturients(), null), leftIndent));
+    }
+
+    private void addSubjectData(Document document, Subject subject, float leftIndent) throws DocumentException {
+        document.add(createBoldColoredParagraph("Предмет №" + subject.getIdSubject(), 0, BaseColor.BLACK));
+        document.add(createStandardParagraph("Название: ", subject.getName(), leftIndent));
     }
 
     public String encryptPDF(String oldFile) throws Exception {
@@ -242,6 +260,46 @@ public class PDFView implements IReportView {
             }
             if (abiturients.isEmpty()) {
                 document.add(createBoldParagraph("Список абитуриентов пуст", 0));
+            }
+            document.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public byte[] generateReportBySpecialities(List<Speciality> specialities) {
+        try {
+            Document document = getTypicalDocument("Отчёт по всем специальностям");
+
+            document.add(createHeader1Paragraph("Специальности"));
+            for (Speciality speciality : specialities) {
+                addSpecialityData(document, speciality, 0);
+                addEmptyLine(document, 1);
+            }
+            if (specialities.isEmpty()) {
+                document.add(createBoldParagraph("Список специальностей пуст", 0));
+            }
+            document.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public byte[] generateReportBySubjects(List<Subject> subjects) {
+        try {
+            Document document = getTypicalDocument("Отчёт по всем предметам");
+
+            document.add(createHeader1Paragraph("Предметы"));
+            for (Subject subject : subjects) {
+                addSubjectData(document, subject, 0);
+                addEmptyLine(document, 1);
+            }
+            if (subjects.isEmpty()) {
+                document.add(createBoldParagraph("Список специальностей пуст", 0));
             }
             document.close();
             return byteArrayOutputStream.toByteArray();

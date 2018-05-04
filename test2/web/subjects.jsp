@@ -16,6 +16,7 @@
     Authorisation authorisation = new Authorisation();
     User currUser = authorisation.getAuthorisedUser(request);
     out.print(Drawer.drawHeader("Предметы", currUser));
+    out.print(Drawer.drawReportsPannel("subjects"));
 %>
 <div class="mainContainer">
     <div class="menu">

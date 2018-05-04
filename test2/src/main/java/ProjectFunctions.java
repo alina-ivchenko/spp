@@ -5,6 +5,12 @@ import java.sql.Date;
 import java.util.*;
 
 public class ProjectFunctions {
+    public static String escapeNullException(Object inputObj, String defaultNullStr) {
+        if (defaultNullStr == null)
+            defaultNullStr = "неизвестно";
+        return inputObj != null && !inputObj.toString().equals("") ? inputObj.toString() : defaultNullStr;
+    }
+
     public static boolean ifDbObjectContainsKey(HashMap<String, Object> dbRetObject, String key) {
         return dbRetObject.containsKey(key) && dbRetObject.get(key) != null;
     }
